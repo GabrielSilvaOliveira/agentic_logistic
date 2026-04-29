@@ -1,0 +1,29 @@
+{
+  "sql": {
+    "host": "localhost",
+    "port": 3306,
+    "database": "article_logistics_mask",
+    "user": "root",
+    "password": "EngComp2020!",
+    "tables": ["materiais", "unidades", "catalogo"],
+    "sample_rows": 3
+  },
+  "api": {
+    "base_url": "http://localhost:8000",
+    "endpoints": [
+      {
+        "path": "/api/distribuicao/deposito/",
+        "key": "distribuicao_list"
+      }
+    ]
+  },
+  "spreadsheets": [
+    {
+      "file": "../data/contratos.xlsx",
+      "key": "contratos",
+      "sample_rows": 3
+    }
+  ],
+  "output": "./output/catalog.json",
+  "template": "./catalog_schema_template.json"
+}
