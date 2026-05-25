@@ -1,0 +1,833 @@
+{
+  "_doc": "Benchmark de avaliação do Semantic Context Builder. 50 queries categorizadas por tipo de dificuldade e cluster semântico. O campo 'expected_primary' contém a fonte que DEVE ser selecionada como primária. O campo 'expected_complement' contém fontes que são aceitáveis como complemento (não obrigatórias). O campo 'must_NOT_include' contém fontes que NÃO devem ser selecionadas — uma seleção errada dessas conta como erro.",
+  "metadata": {
+    "version": "1.0",
+    "total_queries": 50,
+    "created_by": "Gabriel Silva de Oliveira",
+    "project": "Framework Agentic AI — Apoio à Decisão Logística",
+    "difficulty_distribution": {
+      "single_source_simples": 16,
+      "single_source_semantica": 12,
+      "multi_source_complementar": 12,
+      "discriminacao_fina": 10
+    },
+    "cluster_distribution": {
+      "inventario_estado_fisico": 10,
+      "planejamento_comparativo": 8,
+      "estrutura_organizacional": 4,
+      "aquisicao_contratos": 9,
+      "distribuicao_logistica": 7,
+      "manutencao_monitoramento": 12
+    }
+  },
+  "queries": [
+    {
+      "id": "Q01",
+      "query": "Qual a situação física dos equipamentos da organização?",
+      "difficulty": "single_source_simples",
+      "cluster": "inventario_estado_fisico",
+      "expected_primary": [
+        "sql.materiais"
+      ],
+      "expected_complement": [
+        "sql.catalogo",
+        "sql.unidades"
+      ],
+      "must_NOT_include": [
+        "api.distribuicao_list",
+        "spreadsheets.contratos"
+      ],
+      "rationale": "Situação física é campo direto da tabela materiais (SITUACAOFISIC)."
+    },
+    {
+      "id": "Q02",
+      "query": "Quais equipamentos estão indisponíveis e qual o motivo?",
+      "difficulty": "single_source_simples",
+      "cluster": "inventario_estado_fisico",
+      "expected_primary": [
+        "sql.materiais"
+      ],
+      "expected_complement": [
+        "sql.catalogo"
+      ],
+      "must_NOT_include": [
+        "api.distribuicao_list",
+        "spreadsheets.contratos"
+      ],
+      "rationale": "Indisponibilidade e motivo estão em SITUACAOFISIC e MOTIVOINDISP na tabela materiais."
+    },
+    {
+      "id": "Q03",
+      "query": "Quais contratos estão vigentes atualmente?",
+      "difficulty": "single_source_simples",
+      "cluster": "aquisicao_contratos",
+      "expected_primary": [
+        "spreadsheets.contratos"
+      ],
+      "expected_complement": [],
+      "must_NOT_include": [
+        "api.distribuicao_list",
+        "sql.materiais"
+      ],
+      "rationale": "Contratos vigentes — fonte direta é a planilha de contratos."
+    },
+    {
+      "id": "Q04",
+      "query": "Qual o valor total dos itens adquiridos por contrato?",
+      "difficulty": "single_source_simples",
+      "cluster": "aquisicao_contratos",
+      "expected_primary": [
+        "spreadsheets.contratos"
+      ],
+      "expected_complement": [],
+      "must_NOT_include": [
+        "sql.materiais",
+        "api.distribuicao_list"
+      ],
+      "rationale": "Valor de contratos está na planilha de contratos."
+    },
+    {
+      "id": "Q05",
+      "query": "Quais distribuições de equipamentos estão pendentes?",
+      "difficulty": "single_source_simples",
+      "cluster": "distribuicao_logistica",
+      "expected_primary": [
+        "api.distribuicao_list"
+      ],
+      "expected_complement": [
+        "sql.materiais",
+        "sql.unidades"
+      ],
+      "must_NOT_include": [
+        "spreadsheets.contratos",
+        "api.manutencao_ap_direto_list"
+      ],
+      "rationale": "Distribuições pendentes — endpoint primário de distribuição."
+    },
+    {
+      "id": "Q06",
+      "query": "Quais equipamentos foram recebidos no depósito?",
+      "difficulty": "single_source_simples",
+      "cluster": "distribuicao_logistica",
+      "expected_primary": [
+        "api.distribuicao_list"
+      ],
+      "expected_complement": [],
+      "must_NOT_include": [
+        "sql.materiais",
+        "spreadsheets.contratos"
+      ],
+      "rationale": "Recebimento no depósito é dado específico do endpoint de distribuição."
+    },
+    {
+      "id": "Q07",
+      "query": "Qual o status dos terminais Starlink monitorados?",
+      "difficulty": "single_source_simples",
+      "cluster": "manutencao_monitoramento",
+      "expected_primary": [
+        "api.monitoramento_starlink_list"
+      ],
+      "expected_complement": [],
+      "must_NOT_include": [
+        "sql.materiais",
+        "api.distribuicao_list"
+      ],
+      "rationale": "Starlink é mencionado explicitamente — fonte direta."
+    },
+    {
+      "id": "Q08",
+      "query": "Qual a localização dos terminais Starlink ativos?",
+      "difficulty": "single_source_simples",
+      "cluster": "manutencao_monitoramento",
+      "expected_primary": [
+        "api.monitoramento_starlink_list"
+      ],
+      "expected_complement": [],
+      "must_NOT_include": [
+        "sql.unidades",
+        "sql.materiais"
+      ],
+      "rationale": "Localização de terminais Starlink — fonte específica de monitoramento."
+    },
+    {
+      "id": "Q09",
+      "query": "Quais unidades da organização pertencem à região REG001?",
+      "difficulty": "single_source_simples",
+      "cluster": "estrutura_organizacional",
+      "expected_primary": [
+        "sql.unidades"
+      ],
+      "expected_complement": [],
+      "must_NOT_include": [
+        "api.distribuicao_list",
+        "spreadsheets.contratos"
+      ],
+      "rationale": "Região e hierarquia organizacional estão na tabela unidades."
+    },
+    {
+      "id": "Q10",
+      "query": "Quais são os modelos dos equipamentos do fabricante FAB001 catalogados?",
+      "difficulty": "single_source_simples",
+      "cluster": "inventario_estado_fisico",
+      "expected_primary": [
+        "sql.catalogo"
+      ],
+      "expected_complement": [],
+      "must_NOT_include": [
+        "api.distribuicao_list",
+        "spreadsheets.contratos"
+      ],
+      "rationale": "Tipo e modelo de equipamentos estão no catálogo técnico."
+    },
+    {
+      "id": "Q11",
+      "query": "Quais equipamentos passaram por manutenção de apoio direto?",
+      "difficulty": "single_source_simples",
+      "cluster": "manutencao_monitoramento",
+      "expected_primary": [
+        "api.manutencao_ap_direto_list"
+      ],
+      "expected_complement": [
+        "sql.materiais"
+      ],
+      "must_NOT_include": [
+        "api.distribuicao_list",
+        "spreadsheets.contratos"
+      ],
+      "rationale": "Manutenção de apoio direto — endpoint específico de manutenção."
+    },
+    {
+      "id": "Q12",
+      "query": "Qual a dotação prevista de equipamentos para cada tipo de unidade?",
+      "difficulty": "single_source_simples",
+      "cluster": "planejamento_comparativo",
+      "expected_primary": [
+        "sql.regra"
+      ],
+      "expected_complement": [
+        "sql.unidades"
+      ],
+      "must_NOT_include": [
+        "sql.materiais",
+        "api.distribuicao_list"
+      ],
+      "rationale": "Dotação prevista por tipo de unidade está na tabela regra."
+    },
+    {
+      "id": "Q13",
+      "query": "Quais itens constam no quadro de importação?",
+      "difficulty": "single_source_simples",
+      "cluster": "aquisicao_contratos",
+      "expected_primary": [
+        "spreadsheets.quadro_importacao"
+      ],
+      "expected_complement": [],
+      "must_NOT_include": [
+        "spreadsheets.contratos",
+        "sql.materiais"
+      ],
+      "rationale": "Quadro de importação é fonte específica para itens em processo de importação."
+    },
+    {
+      "id": "Q14",
+      "query": "Qual o status dos sistemas de comunicação HF monitorados?",
+      "difficulty": "single_source_simples",
+      "cluster": "manutencao_monitoramento",
+      "expected_primary": [
+        "api.monitoramento_sistema_hf_list"
+      ],
+      "expected_complement": [],
+      "must_NOT_include": [
+        "api.monitoramento_starlink_list",
+        "sql.materiais"
+      ],
+      "rationale": "HF é mencionado explicitamente — fonte de monitoramento HF."
+    },
+    {
+      "id": "Q15",
+      "query": "Qual a região que foi fornecida a maior quantidade de materiais?",
+      "difficulty": "single_source_simples",
+      "cluster": "aquisicao_contratos",
+      "expected_primary": [
+        "spreadsheets.fornecimento"
+      ],
+      "expected_complement": [],
+      "must_NOT_include": [
+        "spreadsheets.contratos",
+        "api.distribuicao_list"
+      ],
+      "rationale": "Controle de fornecimento — planilha específica de fornecimento."
+    },
+    {
+      "id": "Q16",
+      "query": "Quais equipamentos estão cautelados em outra unidade?",
+      "difficulty": "single_source_simples",
+      "cluster": "inventario_estado_fisico",
+      "expected_primary": [
+        "sql.materiais"
+      ],
+      "expected_complement": [
+        "sql.unidades"
+      ],
+      "must_NOT_include": [
+        "api.distribuicao_list",
+        "spreadsheets.contratos"
+      ],
+      "rationale": "Cautela é campo direto da tabela materiais (ACAUTELADO, UNIDADECAUTELADO)."
+    },
+    {
+      "id": "Q17",
+      "query": "Quantos rádios a organização possui e em que estado se encontram?",
+      "difficulty": "single_source_semantica",
+      "cluster": "inventario_estado_fisico",
+      "expected_primary": [
+        "sql.materiais"
+      ],
+      "expected_complement": [
+        "sql.catalogo"
+      ],
+      "must_NOT_include": [
+        "api.distribuicao_list",
+        "spreadsheets.contratos"
+      ],
+      "rationale": "Rádios são equipamentos — a tabela materiais registra todos com seu estado. Vocabulário indireto: 'rádios' não aparece literalmente no hint."
+    },
+    {
+      "id": "Q18",
+      "query": "Há algum equipamento não está na carga de uma unidade da organização?",
+      "difficulty": "single_source_semantica",
+      "cluster": "inventario_estado_fisico",
+      "expected_primary": [
+        "sql.materiais"
+      ],
+      "expected_complement": [],
+      "must_NOT_include": [
+        "api.distribuicao_list"
+      ],
+      "rationale": "Sem carga refere-se à SITUACAOPARTIM = 'Fora de Carga'. Vocabulário indireto."
+    },
+    {
+      "id": "Q19",
+      "query": "Qual a situação dos sistemas de comunicação por satélite da organização?",
+      "difficulty": "single_source_semantica",
+      "cluster": "manutencao_monitoramento",
+      "expected_primary": [
+        "api.monitoramento_sistema_satelital_list"
+      ],
+      "expected_complement": [],
+      "must_NOT_include": [
+        "api.monitoramento_starlink_list",
+        "sql.materiais"
+      ],
+      "rationale": "Sistemas satelitais sem mencionar Starlink — endpoint de monitoramento satelital. Teste de discriminação entre Starlink e satelital genérico."
+    },
+    {
+      "id": "Q20",
+      "query": "Quais foram as principais fontes de recurso para as aquisições?",
+      "difficulty": "single_source_semantica",
+      "cluster": "aquisicao_contratos",
+      "expected_primary": [
+        "spreadsheets.contratos"
+      ],
+      "expected_complement": [
+        "spreadsheets.quadro_importacao"
+      ],
+      "must_NOT_include": [
+        "sql.materiais",
+        "api.distribuicao_list"
+      ],
+      "rationale": "Recursos externos remetem a contratos — vocabulário indireto para 'fonte de fundos'."
+    },
+    {
+      "id": "Q21",
+      "query": "A organização está completamente equipada em todas as suas unidades?",
+      "difficulty": "single_source_semantica",
+      "cluster": "planejamento_comparativo",
+      "expected_primary": [
+        "sql.vw_comparativo_previsto_existente"
+      ],
+      "expected_complement": [
+        "sql.regra"
+      ],
+      "must_NOT_include": [
+        "sql.materiais",
+        "api.distribuicao_list"
+      ],
+      "rationale": "Completamento de equipamentos por unidade — a view comparativa. Vocabulário abstrato: 'completamente equipada'."
+    },
+    {
+      "id": "Q22",
+      "query": "Existem itens aguardando processo de importação?",
+      "difficulty": "single_source_semantica",
+      "cluster": "aquisicao_contratos",
+      "expected_primary": [
+        "spreadsheets.quadro_importacao"
+      ],
+      "expected_complement": [],
+      "must_NOT_include": [
+        "spreadsheets.contratos",
+        "spreadsheets.fornecimento"
+      ],
+      "rationale": "Importação pendente — quadro de importação. Vocabulário: 'aguardando importação' é sinônimo."
+    },
+    {
+      "id": "Q23",
+      "query": "Qual o diagnóstico dos equipamentos que passaram por reparo recente?",
+      "difficulty": "single_source_semantica",
+      "cluster": "manutencao_monitoramento",
+      "expected_primary": [
+        "api.manutencao_ap_direto_list"
+      ],
+      "expected_complement": [],
+      "must_NOT_include": [
+        "sql.materiais",
+        "api.distribuicao_list"
+      ],
+      "rationale": "Diagnóstico de reparo — vocabulário indireto para manutenção de apoio direto."
+    },
+    {
+      "id": "Q24",
+      "query": "Quais unidades têm déficit de equipamentos em relação ao previsto?",
+      "difficulty": "single_source_semantica",
+      "cluster": "planejamento_comparativo",
+      "expected_primary": [
+        "sql.vw_comparativo_previsto_existente"
+      ],
+      "expected_complement": [
+        "sql.unidades"
+      ],
+      "must_NOT_include": [
+        "sql.materiais",
+        "api.distribuicao_list"
+      ],
+      "rationale": "Déficit entre previsto e existente — view comparativa. Vocabulário: 'déficit' é sinônimo de diferença negativa."
+    },
+    {
+      "id": "Q25",
+      "query": "Onde estão localizados os sites que compõem o sistema rádio?",
+      "difficulty": "single_source_semantica",
+      "cluster": "manutencao_monitoramento",
+      "expected_primary": [
+        "api.monitoramento_sites_sistema_radio_list"
+      ],
+      "expected_complement": [],
+      "must_NOT_include": [
+        "sql.unidades",
+        "api.monitoramento_sistema_hf_list"
+      ],
+      "rationale": "Sites de comunicação rádio — endpoint específico. Vocabulário: 'sites' mapeia para o endpoint de sites de sistema rádio."
+    },
+    {
+      "id": "Q26",
+      "query": "Qual a hierarquia organizacional das unidades de minha organização?",
+      "difficulty": "single_source_semantica",
+      "cluster": "estrutura_organizacional",
+      "expected_primary": [
+        "sql.unidades"
+      ],
+      "expected_complement": [],
+      "must_NOT_include": [
+        "sql.materiais",
+        "api.distribuicao_list"
+      ],
+      "rationale": "Hierarquia organizacional — vocabulário indireto para área, divisão, unidade superior na tabela unidades."
+    },
+    {
+      "id": "Q27",
+      "query": "Quais itens do contrato já foram entregues às unidades?",
+      "difficulty": "single_source_semantica",
+      "cluster": "aquisicao_contratos",
+      "expected_primary": [
+        "api.distribuicao_list"
+      ],
+      "expected_complement": [
+        "spreadsheets.contratos, sheet.fornecimento"
+      ],
+      "must_NOT_include": [
+        "sql.materiais"
+      ],
+      "rationale": "Itens entregues pelo contrato — API de distribuição. Vocabulário: a relação de itens de contrato com a entrega está mais clara na API de distribuição do que na planilha defornecimento."
+    },
+    {
+      "id": "Q28",
+      "query": "Qual o fabricante e modelo dos equipamentos em carga na organização?",
+      "difficulty": "single_source_semantica",
+      "cluster": "inventario_estado_fisico",
+      "expected_primary": [
+        "sql.vw_materiais_catalogo_unidade"
+      ],
+      "expected_complement": [],
+      "must_NOT_include": [
+        "sql.catalogo",
+        "api.distribuicao_list"
+      ],
+      "rationale": "Fabricante+modelo+carga — a view consolidada une materiais e catálogo. Usar sql.catalogo isolado seria incompleto."
+    },
+    {
+      "id": "Q29",
+      "query": "Quais distribuições de equipamentos foram feitas para unidades da região REG002?",
+      "difficulty": "multi_source_complementar",
+      "cluster": "distribuicao_logistica",
+      "expected_primary": [
+        "api.distribuicao_list"
+      ],
+      "expected_complement": [
+        "sql.unidades"
+      ],
+      "must_NOT_include": [
+        "spreadsheets.contratos",
+        "api.manutencao_ap_direto_list"
+      ],
+      "rationale": "Distribuições (primário) + região (complemento via unidades)."
+    },
+    {
+      "id": "Q30",
+      "query": "Quantos equipamentos do tipo TEQ009 existem em cada unidade e qual o previsto?",
+      "difficulty": "multi_source_complementar",
+      "cluster": "planejamento_comparativo",
+      "expected_primary": [
+        "sql.vw_comparativo_previsto_existente"
+      ],
+      "expected_complement": [
+        "sql.regra",
+        "sql.unidades"
+      ],
+      "must_NOT_include": [
+        "api.distribuicao_list",
+        "spreadsheets.contratos"
+      ],
+      "rationale": "Comparativo previsto vs existente por tipo de equipamento — view comparativa + regra."
+    },
+    {
+      "id": "Q31",
+      "query": "Qual o valor dos equipamentos distribuídos e ainda não entregues?",
+      "difficulty": "multi_source_complementar",
+      "cluster": "distribuicao_logistica",
+      "expected_primary": [
+        "api.distribuicao_list"
+      ],
+      "expected_complement": [
+        "spreadsheets.contratos"
+      ],
+      "must_NOT_include": [
+        "sql.materiais",
+        "api.manutencao_ap_direto_list"
+      ],
+      "rationale": "Status de distribuição (primário API) + valor do contrato (complemento planilha)."
+    },
+    {
+      "id": "Q32",
+      "query": "Quais equipamentos indisponíveis precisam de manutenção e qual o diagnóstico?",
+      "difficulty": "multi_source_complementar",
+      "cluster": "manutencao_monitoramento",
+      "expected_primary": [
+        "sql.materiais"
+      ],
+      "expected_complement": [
+        "api.manutencao_ap_direto_list"
+      ],
+      "must_NOT_include": [
+        "api.distribuicao_list",
+        "spreadsheets.contratos"
+      ],
+      "rationale": "Indisponibilidade (materiais) + diagnóstico de manutenção (API)."
+    },
+    {
+      "id": "Q33",
+      "query": "Qual o nome e fabricante dos equipamentos recebidos no depósito?",
+      "difficulty": "multi_source_complementar",
+      "cluster": "distribuicao_logistica",
+      "expected_primary": [
+        "api.distribuicao_list"
+      ],
+      "expected_complement": [
+        "sql.catalogo"
+      ],
+      "must_NOT_include": [
+        "spreadsheets.contratos",
+        "sql.materiais"
+      ],
+      "rationale": "Recebimento no depósito (primário API) + nome/fabricante (complemento catálogo)."
+    },
+    {
+      "id": "Q34",
+      "query": "Quais unidades têm equipamentos indisponíveis e em que região estão?",
+      "difficulty": "multi_source_complementar",
+      "cluster": "inventario_estado_fisico",
+      "expected_primary": [
+        "sql.materiais"
+      ],
+      "expected_complement": [
+        "sql.unidades"
+      ],
+      "must_NOT_include": [
+        "api.distribuicao_list",
+        "spreadsheets.contratos"
+      ],
+      "rationale": "Indisponibilidade (materiais) + região da unidade (complemento unidades)."
+    },
+    {
+      "id": "Q35",
+      "query": "Quais itens do quadro de importação já geraram contratos?",
+      "difficulty": "multi_source_complementar",
+      "cluster": "aquisicao_contratos",
+      "expected_primary": [
+        "spreadsheets.quadro_importacao"
+      ],
+      "expected_complement": [
+        "spreadsheets.contratos"
+      ],
+      "must_NOT_include": [
+        "sql.materiais",
+        "api.distribuicao_list"
+      ],
+      "rationale": "Importação (primário) + verificação de contratos (complemento)."
+    },
+    {
+      "id": "Q36",
+      "query": "Quais equipamentos foram manutenidos e retornaram disponíveis para quais unidades?",
+      "difficulty": "multi_source_complementar",
+      "cluster": "manutencao_monitoramento",
+      "expected_primary": [
+        "api.manutencao_ap_direto_list"
+      ],
+      "expected_complement": [
+        "sql.unidades",
+        "sql.materiais"
+      ],
+      "must_NOT_include": [
+        "api.distribuicao_list",
+        "spreadsheets.contratos"
+      ],
+      "rationale": "Manutenção (primário) + unidade e material (complemento SQL)."
+    },
+    {
+      "id": "Q37",
+      "query": "Quanto foi gasto em contratos para equipamentos que já estão em carga nas unidades?",
+      "difficulty": "multi_source_complementar",
+      "cluster": "aquisicao_contratos",
+      "expected_primary": [
+        "spreadsheets.contratos"
+      ],
+      "expected_complement": [
+        "sql.materiais"
+      ],
+      "must_NOT_include": [
+        "api.distribuicao_list",
+        "spreadsheets.fornecimento"
+      ],
+      "rationale": "Valor de contrato (primário planilha) + verificação de carga (complemento materiais)."
+    },
+    {
+      "id": "Q38",
+      "query": "Qual o completamento de equipamentos por unidade e qual o nível mínimo exigido?",
+      "difficulty": "multi_source_complementar",
+      "cluster": "planejamento_comparativo",
+      "expected_primary": [
+        "sql.vw_comparativo_previsto_existente"
+      ],
+      "expected_complement": [
+        "sql.regra"
+      ],
+      "must_NOT_include": [
+        "sql.materiais",
+        "api.distribuicao_list"
+      ],
+      "rationale": "Comparativo (primário) + nível mínimo definido nas regras (complemento)."
+    },
+    {
+      "id": "Q39",
+      "query": "Quantos terminais Starlink estão ativos e em quais unidades?",
+      "difficulty": "multi_source_complementar",
+      "cluster": "manutencao_monitoramento",
+      "expected_primary": [
+        "api.monitoramento_starlink_list"
+      ],
+      "expected_complement": [
+        "sql.unidades"
+      ],
+      "must_NOT_include": [
+        "sql.materiais",
+        "api.distribuicao_list"
+      ],
+      "rationale": "Monitoramento Starlink (primário) + dados da unidade (complemento)."
+    },
+    {
+      "id": "Q40",
+      "query": "Quais itens fornecidos correspondem aos contratos vigentes?",
+      "difficulty": "multi_source_complementar",
+      "cluster": "aquisicao_contratos",
+      "expected_primary": [
+        "spreadsheets.fornecimento"
+      ],
+      "expected_complement": [
+        "spreadsheets.contratos"
+      ],
+      "must_NOT_include": [
+        "api.distribuicao_list",
+        "sql.materiais"
+      ],
+      "rationale": "Controle de fornecimento (primário) + validação de contratos (complemento)."
+    },
+    {
+      "id": "Q41",
+      "query": "Quais equipamentos foram distribuídos mas ainda não foram incorporados ao patrimônio das unidades?",
+      "difficulty": "discriminacao_fina",
+      "cluster": "distribuicao_logistica",
+      "expected_primary": [
+        "api.distribuicao_list"
+      ],
+      "expected_complement": [
+        "sql.materiais"
+      ],
+      "must_NOT_include": [
+        "spreadsheets.contratos",
+        "spreadsheets.fornecimento"
+      ],
+      "rationale": "DIFÍCIL: distribuição (API) vs patrimônio/carga (materiais). A query cruza os dois mas a fonte primária é a API de distribuição."
+    },
+    {
+      "id": "Q42",
+      "query": "Qual a diferença entre os equipamentos previstos e os existentes por tipo de equipamento em cada unidade?",
+      "difficulty": "discriminacao_fina",
+      "cluster": "planejamento_comparativo",
+      "expected_primary": [
+        "sql.vw_comparativo_previsto_existente"
+      ],
+      "expected_complement": [],
+      "must_NOT_include": [
+        "sql.materiais",
+        "sql.regra",
+        "sql.vw_tipoeqp_previsto_unidades"
+      ],
+      "rationale": "DIFÍCIL: view comparativa vs view de tipo_eqp_previsto vs tabela regra. A view comparativa já tem previsto E existente."
+    },
+    {
+      "id": "Q43",
+      "query": "Quais sistemas satelitais (não Starlink) estão operacionais?",
+      "difficulty": "discriminacao_fina",
+      "cluster": "manutencao_monitoramento",
+      "expected_primary": [
+        "api.monitoramento_sistema_satelital_list"
+      ],
+      "expected_complement": [],
+      "must_NOT_include": [
+        "api.monitoramento_starlink_list"
+      ],
+      "rationale": "DIFÍCIL: discriminação entre satelital genérico e Starlink. Query explicita 'não Starlink'."
+    },
+    {
+      "id": "Q44",
+      "query": "Quais equipamentos passaram por manutenção e qual a situação patrimonial atual deles?",
+      "difficulty": "discriminacao_fina",
+      "cluster": "manutencao_monitoramento",
+      "expected_primary": [
+        "api.manutencao_ap_direto_list"
+      ],
+      "expected_complement": [
+        "sql.materiais"
+      ],
+      "must_NOT_include": [
+        "api.distribuicao_list",
+        "spreadsheets.contratos"
+      ],
+      "rationale": "DIFÍCIL: manutenção (API) + situação patrimonial atual (tabela materiais). Risco de confusão entre materiais e manutenção."
+    },
+    {
+      "id": "Q45",
+      "query": "Quantos equipamentos de cada tipo estão previstos para as unidades do tipo X?",
+      "difficulty": "discriminacao_fina",
+      "cluster": "planejamento_comparativo",
+      "expected_primary": [
+        "sql.vw_tipoeqp_previsto_unidades"
+      ],
+      "expected_complement": [],
+      "must_NOT_include": [
+        "sql.vw_comparativo_previsto_existente",
+        "sql.regra"
+      ],
+      "rationale": "DIFÍCIL: view de tipo_eqp_previsto vs view comparativa vs regra. A query pede previsto por tipo — a view específica de tipo_eqp é a mais adequada."
+    },
+    {
+      "id": "Q46",
+      "query": "Quais equipamentos da planilha de fornecimento ainda não estão registrados no sistema patrimonial?",
+      "difficulty": "discriminacao_fina",
+      "cluster": "aquisicao_contratos",
+      "expected_primary": [
+        "spreadsheets.fornecimento"
+      ],
+      "expected_complement": [
+        "sql.materiais"
+      ],
+      "must_NOT_include": [
+        "spreadsheets.contratos",
+        "api.distribuicao_list"
+      ],
+      "rationale": "DIFÍCIL: fornecimento vs contratos vs distribuição. A query é sobre itens fornecidos (planilha fornecimento) que não constam no patrimônio (materiais)."
+    },
+    {
+      "id": "Q47",
+      "query": "Qual a disponibilidade detalhada dos equipamentos incluindo nome, modelo e fabricante?",
+      "difficulty": "discriminacao_fina",
+      "cluster": "inventario_estado_fisico",
+      "expected_primary": [
+        "sql.vw_materiais_catalogo_unidade"
+      ],
+      "expected_complement": [],
+      "must_NOT_include": [
+        "sql.materiais",
+        "sql.catalogo"
+      ],
+      "rationale": "DIFÍCIL: view consolidada vs tabelas individuais. A view já une disponibilidade + nome + modelo + fabricante sem necessidade de JOIN."
+    },
+    {
+      "id": "Q48",
+      "query": "Quais equipamentos precisam ser adquiridos para atingir o nível mínimo de completamento?",
+      "difficulty": "discriminacao_fina",
+      "cluster": "planejamento_comparativo",
+      "expected_primary": [
+        "sql.vw_comparativo_previsto_existente"
+      ],
+      "expected_complement": [
+        "sql.regra"
+      ],
+      "must_NOT_include": [
+        "spreadsheets.contratos",
+        "spreadsheets.quadro_importacao"
+      ],
+      "rationale": "DIFÍCIL: planejamento de aquisição vs contratos/importação vs comparativo. A query é sobre o gap de completamento, não sobre processos de compra já iniciados."
+    },
+    {
+      "id": "Q49",
+      "query": "Quais suprimentos foram empregados nas últimas manutenções realizadas?",
+      "difficulty": "discriminacao_fina",
+      "cluster": "manutencao_monitoramento",
+      "expected_primary": [
+        "api.manutencao_ap_direto_list"
+      ],
+      "expected_complement": [],
+      "must_NOT_include": [
+        "sql.materiais",
+        "spreadsheets.contratos"
+      ],
+      "rationale": "DIFÍCIL: suprimentos empregados em manutenção vs estoque de materiais vs aquisição. Suprimentos de manutenção estão apenas no endpoint de manutenção."
+    },
+    {
+      "id": "Q50",
+      "query": "Quais itens do contrato foram fornecidos e quais ainda estão pendentes de entrega?",
+      "difficulty": "discriminacao_fina",
+      "cluster": "aquisicao_contratos",
+      "expected_primary": [
+        "spreadsheets.fornecimento"
+      ],
+      "expected_complement": [
+        "spreadsheets.contratos"
+      ],
+      "must_NOT_include": [
+        "api.distribuicao_list",
+        "sql.materiais"
+      ],
+      "rationale": "DIFÍCIL: fornecimento (controle de entrega) vs distribuição (API) vs contratos. 'Pendentes de entrega' pode confundir com distribuição pendente."
+    }
+  ]
+}

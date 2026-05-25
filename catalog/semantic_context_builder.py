@@ -7,10 +7,12 @@ Herda todos os renderizadores Markdown do ContextBuilder (v1) e substitui
 apenas o método _select_sources(), usando embeddings ao invés de keywords.
 
 Modelos suportados:
-  "minilm"    → sentence-transformers/all-MiniLM-L6-v2   (EN, leve)
-  "e5-base"   → intfloat/multilingual-e5-base             (multilingual)
-  "e5-large"  → intfloat/multilingual-e5-large            (multilingual, maior)
-  "bge-m3"    → BAAI/bge-m3                               (multilingual, melhor qualidade)
+  "minilm"         → sentence-transformers/all-MiniLM-L6-v2          (EN, leve)
+  "e5-base"        → intfloat/multilingual-e5-base                    (multilingual)
+  "e5-large"       → intfloat/multilingual-e5-large                   (multilingual, maior)
+  "bge-m3"         → BAAI/bge-m3                                      (multilingual, melhor qualidade)
+  "e5-large-instruct" → intfloat/multilingual-e5-large-instruct       (multilingual, instruction-tuned)
+  "serafim"        → PORTULAN/serafim-900m-portuguese-pt-sentence-encoder-ir  (PT-BR especializado)
 
 Estratégia de seleção:
   1. Embedda o texto de cada fonte do catálogo (documentos)
@@ -50,10 +52,18 @@ import json
 import pickle
 from pathlib import Path
 from typing import Optional
+import sys
 
 import numpy as np
 
-from catalog.context_builder import ContextBuilder
+try:
+    from catalog.context_builder import ContextBuilder
+except ModuleNotFoundError:
+    # Permite executar este arquivo diretamente:
+    #   python .\catalog\semantic_context_builder.py ...
+    # sem depender de python -m a partir da raiz do projeto.
+    sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+    from catalog.context_builder import ContextBuilder
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -73,6 +83,7 @@ MODEL_REGISTRY: dict[str, dict] = {
         "normalize":              True,
         # Spread baixo (~0.10–0.35) → threshold absoluto funciona bem
         "default_min_similarity": 0.30,
+        "instruction":            None,  # não usa instruction prefix
     },
     "e5-base": {
         "hf_id":                  "intfloat/multilingual-e5-base",
@@ -81,6 +92,7 @@ MODEL_REGISTRY: dict[str, dict] = {
         "normalize":              True,
         # Spread estreito (~0.77–0.82) → threshold alto + score_gap
         "default_min_similarity": 0.79,
+        "instruction":            None,
     },
     "e5-large": {
         "hf_id":                  "intfloat/multilingual-e5-large",
@@ -88,6 +100,7 @@ MODEL_REGISTRY: dict[str, dict] = {
         "doc_prefix":             "passage: ",
         "normalize":              True,
         "default_min_similarity": 0.79,
+        "instruction":            None,
     },
     "bge-m3": {
         "hf_id":                  "BAAI/bge-m3",
@@ -95,15 +108,47 @@ MODEL_REGISTRY: dict[str, dict] = {
         "doc_prefix":             "",
         "normalize":              True,
         "default_min_similarity": 0.50,
+        "instruction":            None,
+    },
+    # ── Novos modelos ─────────────────────────────────────────────────────────
+    "e5-large-instruct": {
+        "hf_id":                  "intfloat/multilingual-e5-large-instruct",
+        # Para instruction-tuned: o prefixo "query: " é substituído pela
+        # instrução completa. Documentos usam "passage: " normalmente.
+        "query_prefix":           "",       # sobrescrito pelo campo "instruction"
+        "doc_prefix":             "passage: ",
+        "normalize":              True,
+        # Mesma faixa de scores que e5-large; calibrar após primeiro run
+        "default_min_similarity": 0.79,
+        # Instrução em português, específica para o domínio logístico.
+        # Aplicada APENAS na query — nunca nos documentos do catálogo.
+        # Formato exigido pelo modelo: "Instruct: <tarefa>\nQuery: <query>"
+        "instruction": (
+            "Instruct: Dado uma pergunta sobre gestão logística de equipamentos "
+            "militares, identifique a fonte de dados mais relevante entre SQL, "
+            "API REST e planilhas para responder à pergunta.\nQuery: "
+        ),
+    },
+    "serafim": {
+        "hf_id":                  "PORTULAN/serafim-900m-portuguese-pt-sentence-encoder-ir",
+        # Serafim foi treinado para IR em PT sem prefixos especiais
+        "query_prefix":           "",
+        "doc_prefix":             "",
+        "normalize":              True,
+        # Threshold inicial conservador — calibrar empiricamente no primeiro run
+        "default_min_similarity": 0.50,
+        "instruction":            None,
     },
 }
 
 # Slug seguro para nome de arquivo de cache
 _SLUG_MAP = {
-    "minilm":   "minilm",
-    "e5-base":  "e5_base",
-    "e5-large": "e5_large",
-    "bge-m3":   "bge_m3",
+    "minilm":            "minilm",
+    "e5-base":           "e5_base",
+    "e5-large":          "e5_large",
+    "bge-m3":            "bge_m3",
+    "e5-large-instruct": "e5_large_instruct",
+    "serafim":           "serafim",
 }
 
 # Nomes de colunas genéricas a omitir do documento de embedding
@@ -140,7 +185,9 @@ class SemanticContextBuilder(ContextBuilder):
         """
         Parâmetros:
           catalog_path       : caminho para catalog.json
-          model_name         : chave do MODEL_REGISTRY ("minilm", "e5-base", "e5-large", "bge-m3")
+          model_name         : chave do MODEL_REGISTRY
+                               ("minilm", "e5-base", "e5-large", "bge-m3",
+                                "e5-large-instruct", "serafim")
           top_k              : número máximo de fontes a selecionar
           min_similarity     : threshold mínimo de cosine similarity (0–1)
                                (None = usa o default do modelo definido no MODEL_REGISTRY)
@@ -424,14 +471,27 @@ class SemanticContextBuilder(ContextBuilder):
         """
         Seleciona fontes por similaridade semântica com a query.
         Substitui a seleção por keywords do ContextBuilder v1.
+
+        Para modelos instruction-tuned (ex: e5-large-instruct), aplica o
+        campo "instruction" do MODEL_REGISTRY como prefixo da query.
+        O prefixo de instrução é aplicado APENAS na query — nunca nos
+        documentos do catálogo (que usam "doc_prefix" normalmente).
         """
         # Garante que o índice está pronto
         if self._matrix is None:
             self.rebuild_index(verbose=verbose)
 
-        query_prefix = self._model_cfg["query_prefix"]
+        # Monta o texto da query:
+        #   - Modelos instruction-tuned: instruction + query
+        #   - Modelos padrão: query_prefix + query
+        instruction = self._model_cfg.get("instruction")
+        if instruction:
+            query_text = instruction + query
+        else:
+            query_text = self._model_cfg["query_prefix"] + query
+
         q_vec = self.encoder.encode(
-            query_prefix + query,
+            query_text,
             normalize_embeddings=self._model_cfg["normalize"],
             convert_to_numpy=True,
         )
@@ -507,8 +567,10 @@ class SemanticContextBuilder(ContextBuilder):
             self.rebuild_index()
 
         query_prefix = self._model_cfg["query_prefix"]
+        instruction  = self._model_cfg.get("instruction")
+        query_text   = (instruction + query) if instruction else (query_prefix + query)
         q_vec = self.encoder.encode(
-            query_prefix + query,
+            query_text,
             normalize_embeddings=self._model_cfg["normalize"],
             convert_to_numpy=True,
         )

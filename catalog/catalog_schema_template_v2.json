@@ -1,0 +1,243 @@
+{
+  "_schema_version": "1.0",
+  "_doc": "Data Catalog do Framework Agentic — preenchimento misto: SQL auto-extraído, API e Planilha manual. Campos marcados com [MANUAL] devem ser preenchidos por você.",
+  "metadata": {
+    "catalog_version": "1.0.0",
+    "created_at": "",
+    "updated_at": "",
+    "author": "Gabriel Silva de Oliveira",
+    "project": "Framework Agentic AI — Apoio à Decisão Logística",
+    "description": "Esse catálogo é focado em dados logísticos, e inclui 3 tabelas SQL (materiais, unidades, catálogo) - banco de dados MySQL, 1 endpoint de API (distribuição) e 1 planilha (contratos).",
+    "llm_context_note": "Este catálogo é injetado no contexto do LLM para guiar o planejamento de consultas. Mantenha descrições objetivas e orientadas ao domínio logístico."
+  },
+  "sources": {
+    "sql": {
+      "_doc": "Preenchido automaticamente pelo extrator SQL. Revise as descrições geradas.",
+      "connection": {
+        "dialect": "mysql",
+        "host": "localhost",
+        "port": 3306,
+        "database": "agentic_logistics_mask",
+        "charset": "utf8mb4"
+      },
+      "tables": {
+        "materiais": {
+          "embedding_hint": "[MANUAL] Palavras-chave e frases curtas que descrevem esta fonte (20–40 palavras). Ex: 'distribuição entregas unidades depósito status pendente quantidade enviada por unidade de destino'.",
+          "description": "[AUTO+MANUAL] Descreva o que esta tabela representa no negócio logístico",
+          "business_role": "[MANUAL] Ex: Repositório central de itens logísticos cadastrados no sistema",
+          "when_to_use": "[MANUAL] Ex: Consultar quando a pergunta envolver identificação, especificação ou classificação de materiais/equipamentos",
+          "row_count": 0,
+          "column_count": 0,
+          "columns": {},
+          "foreign_keys": [],
+          "sample_rows": [],
+          "data_quality": {
+            "null_rates": {},
+            "last_analyzed": ""
+          }
+        },
+        "unidades": {
+          "embedding_hint": "[MANUAL] Palavras-chave e frases curtas que descrevem esta fonte (20–40 palavras). Ex: 'distribuição entregas unidades depósito status pendente quantidade enviada por unidade de destino'.",
+          "description": "[AUTO+MANUAL]",
+          "business_role": "[MANUAL] Ex: Cadastro de unidades organizacionais, bases e localidades",
+          "when_to_use": "[MANUAL] Ex: Consultar quando a pergunta envolver localização, origem ou destino de materiais",
+          "row_count": 0,
+          "column_count": 0,
+          "columns": {},
+          "foreign_keys": [],
+          "sample_rows": [],
+          "data_quality": {
+            "null_rates": {},
+            "last_analyzed": ""
+          }
+        },
+        "catalogo": {
+          "embedding_hint": "[MANUAL] Palavras-chave e frases curtas que descrevem esta fonte (20–40 palavras). Ex: 'distribuição entregas unidades depósito status pendente quantidade enviada por unidade de destino'.",
+          "description": "[AUTO+MANUAL]",
+          "business_role": "[MANUAL] Ex: Catálogo normativo de itens autorizados para uso e distribuição",
+          "when_to_use": "[MANUAL] Ex: Consultar quando a pergunta envolver categorização normativa, códigos oficiais ou classificação de materiais",
+          "row_count": 0,
+          "column_count": 0,
+          "columns": {},
+          "foreign_keys": [],
+          "sample_rows": [],
+          "data_quality": {
+            "null_rates": {},
+            "last_analyzed": ""
+          }
+        }
+      }
+    },
+    "api": {
+      "_doc": "Preenchimento MANUAL. Descreva cada endpoint com precisão — o LLM usa isso para decidir quando chamar a API vs SQL.",
+      "base_url": "http://localhost:8000",
+      "auth": {
+        "type": "none",
+        "_options": [
+          "none",
+          "bearer_token",
+          "api_key",
+          "basic"
+        ]
+      },
+      "endpoints": {
+        "distribuicao_list": {
+          "embedding_hint": "[MANUAL] Palavras-chave e frases curtas que descrevem esta fonte (20–40 palavras). Ex: 'distribuição entregas unidades depósito status pendente quantidade enviada por unidade de destino'.",
+          "path": "/api/distribuicao/deposito/",
+          "method": "GET",
+          "description": "[MANUAL] Ex: Retorna registros de distribuição de materiais entre unidades, incluindo status, datas e quantidades",
+          "business_role": "[MANUAL] Ex: Fonte primária para rastreamento de movimentações e distribuições em andamento ou concluídas",
+          "when_to_use": "[MANUAL] Ex: Usar quando a pergunta envolver distribuição, movimentação entre unidades, status de entrega ou histórico de transferências",
+          "when_NOT_to_use": "[MANUAL] Ex: Não usar para consultar especificações técnicas de materiais (usar SQL.materiais) ou dados contratuais (usar planilha contratos)",
+          "parameters": {
+            "query_params": {
+              "limit": {
+                "type": "integer",
+                "required": false,
+                "default": 100,
+                "description": "Número máximo de registros retornados"
+              },
+              "offset": {
+                "type": "integer",
+                "required": false,
+                "default": 0,
+                "description": "Paginação: índice inicial"
+              },
+              "status": {
+                "type": "string",
+                "required": false,
+                "description": "[MANUAL] Ex: Filtro por status — valores possíveis: 'pendente', 'em_transito', 'concluido'"
+              },
+              "unidade_destino": {
+                "type": "string",
+                "required": false,
+                "description": "[MANUAL] Ex: Código da unidade de destino para filtrar distribuições"
+              }
+            }
+          },
+          "response_schema": {
+            "format": "json_object_with_metadata",
+            "structure": {
+              "count": "integer — total de registros disponíveis",
+              "next": "string|null — URL da próxima página",
+              "previous": "string|null — URL da página anterior",
+              "results": "array — lista de objetos de distribuição"
+            },
+            "result_object_fields": {
+              "[MANUAL] id": "integer — identificador único da distribuição",
+              "[MANUAL] material_cod": "string — código do material distribuído",
+              "[MANUAL] unidade_origem": "string — código da unidade de origem",
+              "[MANUAL] unidade_destino": "string — código da unidade de destino",
+              "[MANUAL] quantidade": "integer — quantidade distribuída",
+              "[MANUAL] status": "string — status atual da distribuição",
+              "[MANUAL] data_distribuicao": "date — data de início da distribuição",
+              "[MANUAL] data_prevista_entrega": "date — prazo previsto"
+            },
+            "example_response": {
+              "count": 1,
+              "next": null,
+              "previous": null,
+              "results": [
+                {
+                  "_note": "[MANUAL] Cole aqui um exemplo real de resposta da sua API (com dados mascarados)"
+                }
+              ]
+            }
+          },
+          "data_quality": {
+            "update_frequency": "[MANUAL] Ex: Tempo real — atualizado a cada operação de distribuição",
+            "reliability": "[MANUAL] Ex: Alta — fonte transacional primária",
+            "confidence_base": 0.9
+          }
+        }
+      }
+    },
+    "spreadsheets": {
+      "_doc": "Preenchimento MANUAL para descrições. Estrutura de colunas preenchida automaticamente pelo extrator.",
+      "base_path": "[MANUAL] Caminho absoluto ou relativo para a pasta com planilhas. Ex: ./data/spreadsheets/",
+      "files": {
+        "contratos": {
+          "embedding_hint": "[MANUAL] Palavras-chave e frases curtas que descrevem esta fonte (20–40 palavras). Ex: 'distribuição entregas unidades depósito status pendente quantidade enviada por unidade de destino'.",
+          "filename": "contratos.xlsx",
+          "description": "[MANUAL] Ex: Planilha de contratos administrativos vigentes e encerrados com fornecedores de materiais logísticos",
+          "business_role": "[MANUAL] Ex: Fonte de dados contratuais — prazos, valores, fornecedores e condições de fornecimento",
+          "when_to_use": "[MANUAL] Ex: Usar quando a pergunta envolver contratos, fornecedores, valores contratados, vigência ou condições de fornecimento",
+          "when_NOT_to_use": "[MANUAL] Ex: Não usar para estoque atual (usar SQL) ou distribuições em andamento (usar API)",
+          "sheets": {
+            "contratos": {
+              "description": "[MANUAL] Ex: Dados consolidados de contratos — uma linha por contrato",
+              "row_count": 0,
+              "column_count": 0,
+              "columns": {},
+              "sample_rows": []
+            }
+          },
+          "data_quality": {
+            "update_frequency": "[MANUAL] Ex: Mensal — atualizada pela equipe de contratos",
+            "responsible": "[MANUAL] Ex: Seção de Contratos",
+            "reliability": "[MANUAL] Ex: Média — atualização manual, verificar data da última revisão",
+            "confidence_base": 0.75,
+            "_note": "Confiança reduzida em relação ao SQL pois é atualização manual"
+          }
+        }
+      }
+    }
+  },
+  "context_hints": {
+    "_doc": "Regras manuais de roteamento escritas por você. O Context Builder aplica estas regras ANTES da busca semântica. Use para capturar relações que o LLM não inferirá automaticamente.",
+    "rules": [
+      {
+        "id": "rule_001",
+        "trigger_keywords": [
+          "MANUAL — ex: distribuição",
+          "movimentação",
+          "entrega",
+          "transferência"
+        ],
+        "include_sources": [
+          "api.distribuicao_list"
+        ],
+        "complement_with": [
+          "sql.materiais",
+          "sql.unidades"
+        ],
+        "reasoning": "[MANUAL] Ex: Perguntas sobre distribuição precisam da API como fonte primária e das tabelas SQL para enriquecer com nomes de materiais e unidades"
+      },
+      {
+        "id": "rule_002",
+        "trigger_keywords": [
+          "MANUAL — ex: contrato",
+          "fornecedor",
+          "vigência",
+          "valor contratado"
+        ],
+        "include_sources": [
+          "spreadsheets.contratos"
+        ],
+        "complement_with": [
+          "sql.materiais"
+        ],
+        "reasoning": "[MANUAL] Ex: Dados contratuais estão na planilha; materiais do contrato podem ser enriquecidos via SQL"
+      },
+      {
+        "id": "rule_003",
+        "trigger_keywords": [
+          "MANUAL — ex: estoque",
+          "saldo",
+          "quantidade disponível",
+          "onde está"
+        ],
+        "include_sources": [
+          "sql.materiais",
+          "sql.unidades"
+        ],
+        "complement_with": [],
+        "reasoning": "[MANUAL] Ex: Estoque e localização são dados transacionais — SQL é a fonte authoritative"
+      }
+    ],
+    "fallback_rule": {
+      "description": "Quando nenhuma regra específica se aplica, incluir todas as fontes em modo comprimido",
+      "action": "include_all_compressed"
+    }
+  }
+}
