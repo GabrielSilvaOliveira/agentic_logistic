@@ -120,13 +120,20 @@ MODEL_REGISTRY: dict[str, dict] = {
         "normalize":              True,
         # Mesma faixa de scores que e5-large; calibrar após primeiro run
         "default_min_similarity": 0.79,
-        # Instrução em português, específica para o domínio logístico.
-        # Aplicada APENAS na query — nunca nos documentos do catálogo.
-        # Formato exigido pelo modelo: "Instruct: <tarefa>\nQuery: <query>"
+         # Instrução v2 — orientada à TAREFA DE RECUPERAÇÃO (não ao domínio)
+        # PROBLEMA v1: descrevia o domínio ("gestão logística", "militares")
+        #   → termos de domínio contaminavam o embedding → F1=0.532, gap=0.500
+        # CORREÇÃO (Wang et al. 2024 — E5-instruct, ICLR 2025):
+        #   Instrução deve descrever a TAREFA DE IR, não o domínio.
+        #   Inglês como língua da instrução → mais estável (língua de treino).
+        # VARIANTE B em português (para ablação):
+        #   "Instruct: Dada uma consulta de usuário, recupere a descrição da "
+        #   "fonte de dados que melhor corresponde à informação necessária "
+        #   "para respondê-la.\nQuery: "
         "instruction": (
-            "Instruct: Dado uma pergunta sobre gestão logística de equipamentos "
-            "militares, identifique a fonte de dados mais relevante entre SQL, "
-            "API REST e planilhas para responder à pergunta.\nQuery: "
+             "Instruct: Given a user question about enterprise data management, "
+            "retrieve the data source description that best matches the "
+            "information needed to answer the question.\nQuery: "
         ),
     },
     "serafim": {
