@@ -34,7 +34,9 @@ Uso:
 import argparse, json, math, os, statistics, time, re
 from collections import defaultdict
 from pathlib import Path
+from dotenv import load_dotenv
 
+load_dotenv()  # Carrega variáveis de ambiente do arquivo .env
 
 # ── Serialização do catálogo ──────────────────────────────────────────────────
 
@@ -122,15 +124,15 @@ class AzureOpenAIClient:
             raise SystemExit("Execute: pip install openai")
 
         self.model = model
-        endpoint    = os.environ.get("AZURE_OPENAI_ENDPOINT", "")
-        api_key     = os.environ.get("AZURE_OPENAI_API_KEY", "")
-        api_version = os.environ.get("AZURE_OPENAI_API_VERSION", "2024-02-01")
+        endpoint    = os.getenv("OPENAI_API_AZURE_ENDPOINT", "")
+        api_key     = os.getenv("AZURE_API_KEY", "")
+        api_version = os.getenv("AZURE_OPENAI_API_VERSION", "2024-02-01")
 
         if not endpoint or not api_key:
             raise ValueError(
                 "Configure as variáveis de ambiente:\n"
-                "  AZURE_OPENAI_ENDPOINT=https://seu-recurso.openai.azure.com/\n"
-                "  AZURE_OPENAI_API_KEY=sua-chave\n"
+                "  OPENAI_API_AZURE_ENDPOINT=https://seu-recurso.openai.azure.com/\n"
+                "  AZURE_API_KEY=sua-chave\n"
                 "  AZURE_OPENAI_API_VERSION=2024-02-01"
             )
         self.client = AzureOpenAI(
