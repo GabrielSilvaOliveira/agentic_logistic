@@ -34,9 +34,7 @@ Uso:
 import argparse, json, math, os, statistics, time, re
 from collections import defaultdict
 from pathlib import Path
-from dotenv import load_dotenv
 
-load_dotenv()  # Carrega variáveis de ambiente do arquivo .env
 
 # ── Serialização do catálogo ──────────────────────────────────────────────────
 
@@ -102,16 +100,29 @@ def serialize_compressed(catalog):
 
 
 def build_system_prompt(catalog_text):
-    return f"""Você é um assistente especializado em dados logísticos.
-Fontes de dados disponíveis:
+    return f"""Você é um assistente especializado em seleção de fontes de dados logísticos.
 
+Fontes disponíveis:
 {catalog_text}
 
-Identifique quais fontes são necessárias para responder à pergunta do usuário.
-Responda APENAS com JSON válido no formato:
-{{"sources": ["source_id_1", "source_id_2"]}}
+TAREFA: Identifique APENAS as fontes estritamente necessárias para responder à pergunta.
 
-Use apenas os source_ids listados. Inclua somente fontes relevantes."""
+REGRAS OBRIGATÓRIAS:
+1. Responda SOMENTE com JSON no formato exato: {{"sources": ["source_id"]}}
+2. Use EXATAMENTE os source_ids listados acima (ex: "sql.materiais", "api.distribuicao_list", "spreadsheets.contratos")
+3. Prefira MENOS fontes — inclua uma fonte APENAS se ela for indispensável
+4. NÃO adicione fontes "por precaução" ou "podem ser úteis"
+
+EXEMPLOS:
+Pergunta: "Qual a situação dos terminais Starlink?"
+Correto: {{"sources": ["api.monitoramento_starlink_list"]}}
+Errado:  {{"sources": ["api.monitoramento_starlink_list", "sql.materiais"]}}
+
+Pergunta: "Quais contratos estão vigentes?"
+Correto: {{"sources": ["spreadsheets.contratos"]}}
+Errado:  {{"sources": ["spreadsheets.contratos", "api.distribuicao_list"]}}
+
+Responda APENAS com o JSON. Nenhum texto adicional."""
 
 
 # ── Clientes LLM ──────────────────────────────────────────────────────────────
@@ -123,17 +134,37 @@ class AzureOpenAIClient:
         except ImportError:
             raise SystemExit("Execute: pip install openai")
 
-        self.model = model
-        endpoint    = os.getenv("OPENAI_API_AZURE_ENDPOINT", "")
-        api_key     = os.getenv("AZURE_API_KEY", "")
-        api_version = os.getenv("AZURE_OPENAI_API_VERSION", "2024-02-01")
+        # Carrega .env se existir (python-dotenv)
+        # Instale com: pip install python-dotenv
+        try:
+            from dotenv import load_dotenv
+            # Procura .env no diretório atual e nos pais
+            from pathlib import Path as _Path
+            for _p in [_Path.cwd(), _Path.cwd().parent, _Path.cwd().parent.parent]:
+                _env = _p / ".env"
+                if _env.exists():
+                    load_dotenv(_env)
+                    print(f"  [.env] Carregado: {_env}")
+                    break
+        except ImportError:
+            pass  # python-dotenv não instalado — usa só variáveis de ambiente
+
+        self.model  = model
+        endpoint    = os.environ.get("AZURE_OPENAI_ENDPOINT", "")
+        api_key     = os.environ.get("AZURE_OPENAI_API_KEY", "")
+        api_version = os.environ.get("AZURE_OPENAI_API_VERSION", "2024-02-01")
 
         if not endpoint or not api_key:
             raise ValueError(
-                "Configure as variáveis de ambiente:\n"
-                "  OPENAI_API_AZURE_ENDPOINT=https://seu-recurso.openai.azure.com/\n"
-                "  AZURE_API_KEY=sua-chave\n"
-                "  AZURE_OPENAI_API_VERSION=2024-02-01"
+                "Credenciais Azure OpenAI não encontradas.\n\n"
+                "Opção 1 — arquivo .env (recomendado):\n"
+                "  Crie um arquivo .env na pasta do projeto com:\n"
+                "  AZURE_OPENAI_ENDPOINT=https://seu-recurso.openai.azure.com/\n"
+                "  AZURE_OPENAI_API_KEY=sua-chave\n"
+                "  AZURE_OPENAI_API_VERSION=2024-02-01\n\n"
+                "Opção 2 — variáveis de ambiente:\n"
+                "  export AZURE_OPENAI_ENDPOINT=https://seu-recurso.openai.azure.com/\n"
+                "  export AZURE_OPENAI_API_KEY=sua-chave"
             )
         self.client = AzureOpenAI(
             azure_endpoint=endpoint, api_key=api_key, api_version=api_version
