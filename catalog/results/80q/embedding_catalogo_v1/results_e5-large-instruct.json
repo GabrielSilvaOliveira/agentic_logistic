@@ -1,0 +1,2350 @@
+{
+  "model": "e5-large-instruct",
+  "cv_metrics": {
+    "precision": 0.7146,
+    "precision_std": 0.0669,
+    "recall": 0.7281,
+    "recall_std": 0.0778,
+    "f1": 0.6416,
+    "f1_std": 0.0704,
+    "top1_acc": 0.5,
+    "top1_acc_std": 0.0625,
+    "error_rate": 0.2375,
+    "error_rate_std": 0.0815,
+    "ndcg": 0.634,
+    "ndcg_std": 0.0279,
+    "latency_ms": 499.5569,
+    "latency_ms_std": 13.0798
+  },
+  "fold_metrics": [
+    {
+      "precision": 0.6771,
+      "recall": 0.6562,
+      "f1": 0.625,
+      "top1_acc": 0.5,
+      "error_rate": 0.1875,
+      "ndcg": 0.6167,
+      "latency_ms": 512.9831
+    },
+    {
+      "precision": 0.75,
+      "recall": 0.8125,
+      "f1": 0.7479,
+      "top1_acc": 0.5625,
+      "error_rate": 0.1875,
+      "ndcg": 0.6623,
+      "latency_ms": 507.505
+    },
+    {
+      "precision": 0.7708,
+      "recall": 0.6875,
+      "f1": 0.625,
+      "top1_acc": 0.4375,
+      "error_rate": 0.1875,
+      "ndcg": 0.6187,
+      "latency_ms": 490.22
+    },
+    {
+      "precision": 0.7604,
+      "recall": 0.6719,
+      "f1": 0.5536,
+      "top1_acc": 0.4375,
+      "error_rate": 0.25,
+      "ndcg": 0.6064,
+      "latency_ms": 505.3969
+    },
+    {
+      "precision": 0.6146,
+      "recall": 0.8125,
+      "f1": 0.6563,
+      "top1_acc": 0.5625,
+      "error_rate": 0.375,
+      "ndcg": 0.6658,
+      "latency_ms": 481.6794
+    }
+  ],
+  "by_difficulty": {
+    "single_source_simples": {
+      "precision": 0.8583,
+      "recall": 0.95,
+      "f1": 0.8833,
+      "top1_acc": 0.8,
+      "error_rate": 0.0,
+      "ndcg": 0.8204,
+      "latency_ms": 471.895
+    },
+    "single_source_semantica": {
+      "precision": 0.5333,
+      "recall": 0.75,
+      "f1": 0.5833,
+      "top1_acc": 0.45,
+      "error_rate": 0.4,
+      "ndcg": 0.6197,
+      "latency_ms": 486.5475
+    },
+    "multi_source_complementar": {
+      "precision": 0.85,
+      "recall": 0.6625,
+      "f1": 0.6512,
+      "top1_acc": 0.5,
+      "error_rate": 0.05,
+      "ndcg": 0.5892,
+      "latency_ms": 522.964
+    },
+    "discriminacao_fina": {
+      "precision": 0.6167,
+      "recall": 0.55,
+      "f1": 0.4483,
+      "top1_acc": 0.25,
+      "error_rate": 0.5,
+      "ndcg": 0.5065,
+      "latency_ms": 516.821
+    }
+  },
+  "by_cluster": {
+    "manutencao_monitoramento": {
+      "precision": 0.8733,
+      "recall": 0.83,
+      "f1": 0.7876,
+      "top1_acc": 0.76,
+      "error_rate": 0.2,
+      "ndcg": 0.7828,
+      "latency_ms": 496.5856
+    },
+    "inventario_estado_fisico": {
+      "precision": 0.4643,
+      "recall": 0.7857,
+      "f1": 0.5476,
+      "top1_acc": 0.3571,
+      "error_rate": 0.3571,
+      "ndcg": 0.5186,
+      "latency_ms": 498.8757
+    },
+    "planejamento_comparativo": {
+      "precision": 0.4048,
+      "recall": 0.2857,
+      "f1": 0.2381,
+      "top1_acc": 0.2143,
+      "error_rate": 0.5,
+      "ndcg": 0.33,
+      "latency_ms": 499.2343
+    },
+    "aquisicao_contratos": {
+      "precision": 0.8333,
+      "recall": 0.7647,
+      "f1": 0.6745,
+      "top1_acc": 0.4118,
+      "error_rate": 0.1176,
+      "ndcg": 0.6778,
+      "latency_ms": 502.6035
+    },
+    "distribuicao_logistica": {
+      "precision": 0.875,
+      "recall": 0.9375,
+      "f1": 0.8958,
+      "top1_acc": 0.5,
+      "error_rate": 0.0,
+      "ndcg": 0.7181,
+      "latency_ms": 510.0975
+    },
+    "estrutura_organizacional": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "top1_acc": 1.0,
+      "error_rate": 0.0,
+      "ndcg": 1.0,
+      "latency_ms": 475.665
+    }
+  },
+  "by_source_role": {
+    "primaria_unica": {
+      "precision": 0.5463,
+      "recall": 0.7222,
+      "f1": 0.5833,
+      "top1_acc": 0.4444,
+      "error_rate": 0.5,
+      "ndcg": 0.5974,
+      "latency_ms": 491.6378
+    },
+    "": {
+      "precision": 0.7467,
+      "recall": 0.76,
+      "f1": 0.666,
+      "top1_acc": 0.52,
+      "error_rate": 0.18,
+      "ndcg": 0.6604,
+      "latency_ms": 491.951
+    },
+    "multiplas_primarias": {
+      "precision": 0.8611,
+      "recall": 0.5417,
+      "f1": 0.6429,
+      "top1_acc": 0.6667,
+      "error_rate": 0.0,
+      "ndcg": 0.5742,
+      "latency_ms": 569.7117
+    },
+    "primaria_com_complemento": {
+      "precision": 0.8056,
+      "recall": 0.6667,
+      "f1": 0.6111,
+      "top1_acc": 0.3333,
+      "error_rate": 0.1667,
+      "ndcg": 0.5831,
+      "latency_ms": 516.5417
+    }
+  },
+  "all_results": [
+    {
+      "id": "Q54",
+      "query": "Qual a situação operacional dos terminais de comunicação HF?",
+      "difficulty": "single_source_simples",
+      "cluster": "manutencao_monitoramento",
+      "source_role": "primaria_unica",
+      "selected": [
+        "api.monitoramento_sistema_hf_list"
+      ],
+      "expected_primary": [
+        "api.monitoramento_sistema_hf_list"
+      ],
+      "expected_complement": [],
+      "must_NOT_include": [
+        "api.monitoramento_starlink_list",
+        "api.monitoramento_sistema_satelital_list",
+        "sql.materiais"
+      ],
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "top1_acc": 1.0,
+      "error_rate": 0.0,
+      "ndcg": 1.0,
+      "latency_ms": 491.97
+    },
+    {
+      "id": "Q14",
+      "query": "Qual o status dos sistemas de comunicação HF monitorados?",
+      "difficulty": "single_source_simples",
+      "cluster": "manutencao_monitoramento",
+      "source_role": "",
+      "selected": [
+        "api.monitoramento_sistema_hf_list"
+      ],
+      "expected_primary": [
+        "api.monitoramento_sistema_hf_list"
+      ],
+      "expected_complement": [],
+      "must_NOT_include": [
+        "api.monitoramento_starlink_list",
+        "sql.materiais"
+      ],
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "top1_acc": 1.0,
+      "error_rate": 0.0,
+      "ndcg": 1.0,
+      "latency_ms": 482.79
+    },
+    {
+      "id": "Q52",
+      "query": "Qual a situação dos sistemas de comunicação satelital monitorados?",
+      "difficulty": "single_source_simples",
+      "cluster": "manutencao_monitoramento",
+      "source_role": "primaria_unica",
+      "selected": [
+        "api.monitoramento_sistema_satelital_list"
+      ],
+      "expected_primary": [
+        "api.monitoramento_sistema_satelital_list"
+      ],
+      "expected_complement": [],
+      "must_NOT_include": [
+        "api.monitoramento_starlink_list",
+        "sql.materiais"
+      ],
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "top1_acc": 1.0,
+      "error_rate": 0.0,
+      "ndcg": 1.0,
+      "latency_ms": 481.79
+    },
+    {
+      "id": "Q51",
+      "query": "Quais sites de comunicação via rádio estão registrados no sistema?",
+      "difficulty": "single_source_simples",
+      "cluster": "manutencao_monitoramento",
+      "source_role": "primaria_unica",
+      "selected": [
+        "api.monitoramento_sites_sistema_radio_list"
+      ],
+      "expected_primary": [
+        "api.monitoramento_sites_sistema_radio_list"
+      ],
+      "expected_complement": [],
+      "must_NOT_include": [
+        "api.monitoramento_sistema_hf_list",
+        "sql.materiais",
+        "api.distribuicao_list"
+      ],
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "top1_acc": 1.0,
+      "error_rate": 0.0,
+      "ndcg": 1.0,
+      "latency_ms": 491.47
+    },
+    {
+      "id": "Q57",
+      "query": "Quais equipamentos têm número de série registrado e estão em uso ativo?",
+      "difficulty": "single_source_semantica",
+      "cluster": "inventario_estado_fisico",
+      "source_role": "primaria_unica",
+      "selected": [
+        "sql.materiais"
+      ],
+      "expected_primary": [
+        "sql.vw_materiais_catalogo_unidade"
+      ],
+      "expected_complement": [],
+      "must_NOT_include": [
+        "sql.materiais",
+        "sql.catalogo",
+        "api.distribuicao_list"
+      ],
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "top1_acc": 0.0,
+      "error_rate": 1.0,
+      "ndcg": 0.0,
+      "latency_ms": 512.51
+    },
+    {
+      "id": "Q59",
+      "query": "Algum equipamento está sob responsabilidade de uma unidade diferente da detentora?",
+      "difficulty": "single_source_semantica",
+      "cluster": "inventario_estado_fisico",
+      "source_role": "primaria_unica",
+      "selected": [
+        "sql.vw_materiais_catalogo_unidade",
+        "sql.materiais",
+        "sql.catalogo"
+      ],
+      "expected_primary": [
+        "sql.materiais"
+      ],
+      "expected_complement": [
+        "sql.unidades"
+      ],
+      "must_NOT_include": [
+        "api.distribuicao_list",
+        "spreadsheets.contratos"
+      ],
+      "precision": 0.3333,
+      "recall": 1.0,
+      "f1": 0.5,
+      "top1_acc": 0.0,
+      "error_rate": 0.0,
+      "ndcg": 0.4796,
+      "latency_ms": 527.67
+    },
+    {
+      "id": "Q19",
+      "query": "Qual a situação dos sistemas de comunicação por satélite da organização?",
+      "difficulty": "single_source_semantica",
+      "cluster": "manutencao_monitoramento",
+      "source_role": "",
+      "selected": [
+        "api.monitoramento_sistema_satelital_list"
+      ],
+      "expected_primary": [
+        "api.monitoramento_sistema_satelital_list"
+      ],
+      "expected_complement": [],
+      "must_NOT_include": [
+        "api.monitoramento_starlink_list",
+        "sql.materiais"
+      ],
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "top1_acc": 1.0,
+      "error_rate": 0.0,
+      "ndcg": 1.0,
+      "latency_ms": 484.35
+    },
+    {
+      "id": "Q24",
+      "query": "Quais unidades têm déficit de equipamentos em relação ao previsto?",
+      "difficulty": "single_source_semantica",
+      "cluster": "planejamento_comparativo",
+      "source_role": "",
+      "selected": [
+        "sql.vw_tipoeqp_previsto_unidades",
+        "sql.regra",
+        "sql.materiais"
+      ],
+      "expected_primary": [
+        "sql.vw_comparativo_previsto_existente"
+      ],
+      "expected_complement": [
+        "sql.unidades"
+      ],
+      "must_NOT_include": [
+        "sql.materiais",
+        "api.distribuicao_list"
+      ],
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "top1_acc": 0.0,
+      "error_rate": 1.0,
+      "ndcg": 0.0,
+      "latency_ms": 480.21
+    },
+    {
+      "id": "Q38",
+      "query": "Qual o completamento de equipamentos por unidade e qual o nível mínimo exigido?",
+      "difficulty": "multi_source_complementar",
+      "cluster": "planejamento_comparativo",
+      "source_role": "",
+      "selected": [
+        "sql.regra"
+      ],
+      "expected_primary": [
+        "sql.vw_comparativo_previsto_existente"
+      ],
+      "expected_complement": [
+        "sql.regra"
+      ],
+      "must_NOT_include": [
+        "sql.materiais",
+        "api.distribuicao_list"
+      ],
+      "precision": 1.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "top1_acc": 0.0,
+      "error_rate": 0.0,
+      "ndcg": 0.3801,
+      "latency_ms": 526.03
+    },
+    {
+      "id": "Q34",
+      "query": "Quais unidades têm equipamentos indisponíveis e em que região estão?",
+      "difficulty": "multi_source_complementar",
+      "cluster": "inventario_estado_fisico",
+      "source_role": "",
+      "selected": [
+        "sql.materiais"
+      ],
+      "expected_primary": [
+        "sql.materiais"
+      ],
+      "expected_complement": [
+        "sql.unidades"
+      ],
+      "must_NOT_include": [
+        "api.distribuicao_list",
+        "spreadsheets.contratos"
+      ],
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "top1_acc": 1.0,
+      "error_rate": 0.0,
+      "ndcg": 0.7602,
+      "latency_ms": 499.86
+    },
+    {
+      "id": "Q35",
+      "query": "Quais itens do quadro de importação já geraram contratos?",
+      "difficulty": "multi_source_complementar",
+      "cluster": "aquisicao_contratos",
+      "source_role": "",
+      "selected": [
+        "spreadsheets.contratos",
+        "spreadsheets.quadro_importacao"
+      ],
+      "expected_primary": [
+        "spreadsheets.quadro_importacao"
+      ],
+      "expected_complement": [
+        "spreadsheets.contratos"
+      ],
+      "must_NOT_include": [
+        "sql.materiais",
+        "api.distribuicao_list"
+      ],
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "top1_acc": 0.0,
+      "error_rate": 0.0,
+      "ndcg": 0.8597,
+      "latency_ms": 508.71
+    },
+    {
+      "id": "Q30",
+      "query": "Quantos equipamentos do tipo TEQ009 existem em cada unidade e qual o previsto?",
+      "difficulty": "multi_source_complementar",
+      "cluster": "planejamento_comparativo",
+      "source_role": "",
+      "selected": [
+        "sql.vw_tipoeqp_previsto_unidades"
+      ],
+      "expected_primary": [
+        "sql.vw_comparativo_previsto_existente"
+      ],
+      "expected_complement": [
+        "sql.regra",
+        "sql.unidades"
+      ],
+      "must_NOT_include": [
+        "api.distribuicao_list",
+        "spreadsheets.contratos"
+      ],
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "top1_acc": 0.0,
+      "error_rate": 0.0,
+      "ndcg": 0.0,
+      "latency_ms": 535.81
+    },
+    {
+      "id": "Q71",
+      "query": "Qual a situação dos sistemas de comunicação por satélite que não utilizam tecnologia LEO?",
+      "difficulty": "discriminacao_fina",
+      "cluster": "manutencao_monitoramento",
+      "source_role": "primaria_unica",
+      "selected": [
+        "api.monitoramento_sistema_satelital_list"
+      ],
+      "expected_primary": [
+        "api.monitoramento_sistema_satelital_list"
+      ],
+      "expected_complement": [],
+      "must_NOT_include": [
+        "api.monitoramento_starlink_list"
+      ],
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "top1_acc": 1.0,
+      "error_rate": 0.0,
+      "ndcg": 1.0,
+      "latency_ms": 521.58
+    },
+    {
+      "id": "Q72",
+      "query": "Quantos equipamentos de cada tipo estão disponíveis nas unidades em relação ao que foi definido como dotação?",
+      "difficulty": "discriminacao_fina",
+      "cluster": "planejamento_comparativo",
+      "source_role": "primaria_unica",
+      "selected": [
+        "sql.materiais"
+      ],
+      "expected_primary": [
+        "sql.vw_comparativo_previsto_existente"
+      ],
+      "expected_complement": [],
+      "must_NOT_include": [
+        "sql.vw_tipoeqp_previsto_unidades",
+        "sql.regra",
+        "sql.materiais"
+      ],
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "top1_acc": 0.0,
+      "error_rate": 1.0,
+      "ndcg": 0.0,
+      "latency_ms": 562.06
+    },
+    {
+      "id": "Q45",
+      "query": "Quantos equipamentos de cada tipo estão previstos para as unidades do tipo X?",
+      "difficulty": "discriminacao_fina",
+      "cluster": "planejamento_comparativo",
+      "source_role": "",
+      "selected": [
+        "sql.vw_tipoeqp_previsto_unidades"
+      ],
+      "expected_primary": [
+        "sql.vw_tipoeqp_previsto_unidades"
+      ],
+      "expected_complement": [],
+      "must_NOT_include": [
+        "sql.vw_comparativo_previsto_existente",
+        "sql.regra"
+      ],
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "top1_acc": 1.0,
+      "error_rate": 0.0,
+      "ndcg": 1.0,
+      "latency_ms": 520.15
+    },
+    {
+      "id": "Q80",
+      "query": "Um equipamento recebido no depósito mas ainda não distribuído já pode estar registrado como em carga em alguma unidade?",
+      "difficulty": "discriminacao_fina",
+      "cluster": "distribuicao_logistica",
+      "source_role": "multiplas_primarias",
+      "selected": [
+        "sql.vw_comparativo_previsto_existente",
+        "api.distribuicao_list"
+      ],
+      "expected_primary": [
+        "api.distribuicao_list",
+        "sql.materiais"
+      ],
+      "expected_complement": [],
+      "must_NOT_include": [
+        "spreadsheets.contratos",
+        "spreadsheets.fornecimento"
+      ],
+      "precision": 0.5,
+      "recall": 0.5,
+      "f1": 0.5,
+      "top1_acc": 0.0,
+      "error_rate": 0.0,
+      "ndcg": 0.3869,
+      "latency_ms": 580.77
+    },
+    {
+      "id": "Q06",
+      "query": "Quais equipamentos foram recebidos no depósito?",
+      "difficulty": "single_source_simples",
+      "cluster": "distribuicao_logistica",
+      "source_role": "",
+      "selected": [
+        "api.distribuicao_list"
+      ],
+      "expected_primary": [
+        "api.distribuicao_list"
+      ],
+      "expected_complement": [],
+      "must_NOT_include": [
+        "sql.materiais",
+        "spreadsheets.contratos"
+      ],
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "top1_acc": 1.0,
+      "error_rate": 0.0,
+      "ndcg": 1.0,
+      "latency_ms": 459.73
+    },
+    {
+      "id": "Q16",
+      "query": "Quais equipamentos estão cautelados em outra unidade?",
+      "difficulty": "single_source_simples",
+      "cluster": "inventario_estado_fisico",
+      "source_role": "",
+      "selected": [
+        "sql.vw_materiais_catalogo_unidade"
+      ],
+      "expected_primary": [
+        "sql.materiais"
+      ],
+      "expected_complement": [
+        "sql.unidades"
+      ],
+      "must_NOT_include": [
+        "api.distribuicao_list",
+        "spreadsheets.contratos"
+      ],
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "top1_acc": 0.0,
+      "error_rate": 0.0,
+      "ndcg": 0.0,
+      "latency_ms": 462.92
+    },
+    {
+      "id": "Q11",
+      "query": "Quais equipamentos passaram por manutenção de apoio direto?",
+      "difficulty": "single_source_simples",
+      "cluster": "manutencao_monitoramento",
+      "source_role": "",
+      "selected": [
+        "api.manutencao_ap_direto_list"
+      ],
+      "expected_primary": [
+        "api.manutencao_ap_direto_list"
+      ],
+      "expected_complement": [
+        "sql.materiais"
+      ],
+      "must_NOT_include": [
+        "api.distribuicao_list",
+        "spreadsheets.contratos"
+      ],
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "top1_acc": 1.0,
+      "error_rate": 0.0,
+      "ndcg": 0.7602,
+      "latency_ms": 486.78
+    },
+    {
+      "id": "Q08",
+      "query": "Qual a localização dos terminais Starlink ativos?",
+      "difficulty": "single_source_simples",
+      "cluster": "manutencao_monitoramento",
+      "source_role": "",
+      "selected": [
+        "api.monitoramento_starlink_list"
+      ],
+      "expected_primary": [
+        "api.monitoramento_starlink_list"
+      ],
+      "expected_complement": [],
+      "must_NOT_include": [
+        "sql.unidades",
+        "sql.materiais"
+      ],
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "top1_acc": 1.0,
+      "error_rate": 0.0,
+      "ndcg": 1.0,
+      "latency_ms": 470.14
+    },
+    {
+      "id": "Q25",
+      "query": "Onde estão localizados os sites que compõem o sistema rádio?",
+      "difficulty": "single_source_semantica",
+      "cluster": "manutencao_monitoramento",
+      "source_role": "",
+      "selected": [
+        "api.monitoramento_sites_sistema_radio_list"
+      ],
+      "expected_primary": [
+        "api.monitoramento_sites_sistema_radio_list"
+      ],
+      "expected_complement": [],
+      "must_NOT_include": [
+        "sql.unidades",
+        "api.monitoramento_sistema_hf_list"
+      ],
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "top1_acc": 1.0,
+      "error_rate": 0.0,
+      "ndcg": 1.0,
+      "latency_ms": 512.14
+    },
+    {
+      "id": "Q18",
+      "query": "Há algum equipamento não está na carga de uma unidade da organização?",
+      "difficulty": "single_source_semantica",
+      "cluster": "inventario_estado_fisico",
+      "source_role": "",
+      "selected": [
+        "sql.materiais"
+      ],
+      "expected_primary": [
+        "sql.materiais"
+      ],
+      "expected_complement": [],
+      "must_NOT_include": [
+        "api.distribuicao_list"
+      ],
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "top1_acc": 1.0,
+      "error_rate": 0.0,
+      "ndcg": 1.0,
+      "latency_ms": 497.5
+    },
+    {
+      "id": "Q17",
+      "query": "Quantos rádios a organização possui e em que estado se encontram?",
+      "difficulty": "single_source_semantica",
+      "cluster": "inventario_estado_fisico",
+      "source_role": "",
+      "selected": [
+        "api.monitoramento_sites_sistema_radio_list"
+      ],
+      "expected_primary": [
+        "sql.materiais"
+      ],
+      "expected_complement": [
+        "sql.catalogo"
+      ],
+      "must_NOT_include": [
+        "api.distribuicao_list",
+        "spreadsheets.contratos"
+      ],
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "top1_acc": 0.0,
+      "error_rate": 0.0,
+      "ndcg": 0.0,
+      "latency_ms": 513.94
+    },
+    {
+      "id": "Q56",
+      "query": "Há terminais de comunicação de longa distância fora de operação?",
+      "difficulty": "single_source_semantica",
+      "cluster": "manutencao_monitoramento",
+      "source_role": "primaria_unica",
+      "selected": [
+        "api.monitoramento_starlink_list",
+        "api.monitoramento_sistema_hf_list"
+      ],
+      "expected_primary": [
+        "api.monitoramento_sistema_hf_list"
+      ],
+      "expected_complement": [],
+      "must_NOT_include": [
+        "api.monitoramento_starlink_list",
+        "sql.materiais",
+        "api.distribuicao_list"
+      ],
+      "precision": 0.5,
+      "recall": 1.0,
+      "f1": 0.6667,
+      "top1_acc": 0.0,
+      "error_rate": 1.0,
+      "ndcg": 0.6309,
+      "latency_ms": 483.17
+    },
+    {
+      "id": "Q29",
+      "query": "Quais distribuições de equipamentos foram feitas para unidades da região REG002?",
+      "difficulty": "multi_source_complementar",
+      "cluster": "distribuicao_logistica",
+      "source_role": "",
+      "selected": [
+        "sql.vw_tipoeqp_previsto_unidades",
+        "api.distribuicao_list"
+      ],
+      "expected_primary": [
+        "api.distribuicao_list"
+      ],
+      "expected_complement": [
+        "sql.unidades"
+      ],
+      "must_NOT_include": [
+        "spreadsheets.contratos",
+        "api.manutencao_ap_direto_list"
+      ],
+      "precision": 0.5,
+      "recall": 1.0,
+      "f1": 0.6667,
+      "top1_acc": 0.0,
+      "error_rate": 0.0,
+      "ndcg": 0.4796,
+      "latency_ms": 524.85
+    },
+    {
+      "id": "Q39",
+      "query": "Quantos terminais Starlink estão ativos e em quais unidades?",
+      "difficulty": "multi_source_complementar",
+      "cluster": "manutencao_monitoramento",
+      "source_role": "",
+      "selected": [
+        "api.monitoramento_starlink_list"
+      ],
+      "expected_primary": [
+        "api.monitoramento_starlink_list"
+      ],
+      "expected_complement": [
+        "sql.unidades"
+      ],
+      "must_NOT_include": [
+        "sql.materiais",
+        "api.distribuicao_list"
+      ],
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "top1_acc": 1.0,
+      "error_rate": 0.0,
+      "ndcg": 0.7602,
+      "latency_ms": 497.49
+    },
+    {
+      "id": "Q66",
+      "query": "Quais terminais HF foram manutenidos e qual a situação atual no sistema de monitoramento?",
+      "difficulty": "multi_source_complementar",
+      "cluster": "manutencao_monitoramento",
+      "source_role": "multiplas_primarias",
+      "selected": [
+        "api.monitoramento_sistema_hf_list"
+      ],
+      "expected_primary": [
+        "api.manutencao_ap_direto_list",
+        "api.monitoramento_sistema_hf_list"
+      ],
+      "expected_complement": [],
+      "must_NOT_include": [
+        "sql.materiais",
+        "api.distribuicao_list",
+        "spreadsheets.contratos"
+      ],
+      "precision": 1.0,
+      "recall": 0.5,
+      "f1": 0.6667,
+      "top1_acc": 1.0,
+      "error_rate": 0.0,
+      "ndcg": 0.6131,
+      "latency_ms": 572.18
+    },
+    {
+      "id": "Q37",
+      "query": "Quanto foi gasto em contratos para equipamentos que já estão em carga nas unidades?",
+      "difficulty": "multi_source_complementar",
+      "cluster": "aquisicao_contratos",
+      "source_role": "",
+      "selected": [
+        "spreadsheets.contratos"
+      ],
+      "expected_primary": [
+        "spreadsheets.contratos"
+      ],
+      "expected_complement": [
+        "sql.materiais"
+      ],
+      "must_NOT_include": [
+        "api.distribuicao_list",
+        "spreadsheets.fornecimento"
+      ],
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "top1_acc": 1.0,
+      "error_rate": 0.0,
+      "ndcg": 0.7602,
+      "latency_ms": 516.95
+    },
+    {
+      "id": "Q41",
+      "query": "Quais equipamentos foram distribuídos mas ainda não foram incorporados ao patrimônio das unidades?",
+      "difficulty": "discriminacao_fina",
+      "cluster": "distribuicao_logistica",
+      "source_role": "",
+      "selected": [
+        "sql.materiais",
+        "api.distribuicao_list"
+      ],
+      "expected_primary": [
+        "api.distribuicao_list"
+      ],
+      "expected_complement": [
+        "sql.materiais"
+      ],
+      "must_NOT_include": [
+        "spreadsheets.contratos",
+        "spreadsheets.fornecimento"
+      ],
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "top1_acc": 0.0,
+      "error_rate": 0.0,
+      "ndcg": 0.8597,
+      "latency_ms": 544.41
+    },
+    {
+      "id": "Q77",
+      "query": "Existem estações de comunicação rádio em localidades sem cobertura satelital?",
+      "difficulty": "discriminacao_fina",
+      "cluster": "manutencao_monitoramento",
+      "source_role": "multiplas_primarias",
+      "selected": [
+        "api.monitoramento_sites_sistema_radio_list"
+      ],
+      "expected_primary": [
+        "api.monitoramento_sites_sistema_radio_list",
+        "api.monitoramento_sistema_satelital_list"
+      ],
+      "expected_complement": [],
+      "must_NOT_include": [
+        "sql.unidades",
+        "sql.materiais",
+        "api.monitoramento_starlink_list"
+      ],
+      "precision": 1.0,
+      "recall": 0.5,
+      "f1": 0.6667,
+      "top1_acc": 1.0,
+      "error_rate": 0.0,
+      "ndcg": 0.6131,
+      "latency_ms": 511.07
+    },
+    {
+      "id": "Q47",
+      "query": "Qual a disponibilidade detalhada dos equipamentos incluindo nome, modelo e fabricante?",
+      "difficulty": "discriminacao_fina",
+      "cluster": "inventario_estado_fisico",
+      "source_role": "",
+      "selected": [
+        "sql.catalogo",
+        "sql.materiais",
+        "sql.vw_materiais_catalogo_unidade"
+      ],
+      "expected_primary": [
+        "sql.vw_materiais_catalogo_unidade"
+      ],
+      "expected_complement": [],
+      "must_NOT_include": [
+        "sql.materiais",
+        "sql.catalogo"
+      ],
+      "precision": 0.3333,
+      "recall": 1.0,
+      "f1": 0.5,
+      "top1_acc": 0.0,
+      "error_rate": 1.0,
+      "ndcg": 0.5,
+      "latency_ms": 517.75
+    },
+    {
+      "id": "Q50",
+      "query": "Quais itens do contrato foram fornecidos e quais ainda estão pendentes de entrega?",
+      "difficulty": "discriminacao_fina",
+      "cluster": "aquisicao_contratos",
+      "source_role": "",
+      "selected": [
+        "api.distribuicao_list",
+        "spreadsheets.contratos",
+        "spreadsheets.fornecimento"
+      ],
+      "expected_primary": [
+        "spreadsheets.fornecimento"
+      ],
+      "expected_complement": [
+        "spreadsheets.contratos"
+      ],
+      "must_NOT_include": [
+        "api.distribuicao_list",
+        "sql.materiais"
+      ],
+      "precision": 0.6667,
+      "recall": 1.0,
+      "f1": 0.8,
+      "top1_acc": 0.0,
+      "error_rate": 1.0,
+      "ndcg": 0.6199,
+      "latency_ms": 549.06
+    },
+    {
+      "id": "Q15",
+      "query": "Qual a região que foi fornecida a maior quantidade de materiais?",
+      "difficulty": "single_source_simples",
+      "cluster": "aquisicao_contratos",
+      "source_role": "",
+      "selected": [
+        "sql.vw_materiais_catalogo_unidade",
+        "sql.materiais",
+        "spreadsheets.fornecimento"
+      ],
+      "expected_primary": [
+        "spreadsheets.fornecimento"
+      ],
+      "expected_complement": [],
+      "must_NOT_include": [
+        "spreadsheets.contratos",
+        "api.distribuicao_list"
+      ],
+      "precision": 0.3333,
+      "recall": 1.0,
+      "f1": 0.5,
+      "top1_acc": 0.0,
+      "error_rate": 0.0,
+      "ndcg": 0.5,
+      "latency_ms": 477.9
+    },
+    {
+      "id": "Q53",
+      "query": "Qual a quantidade prevista de cada tipo de equipamento por unidade?",
+      "difficulty": "single_source_simples",
+      "cluster": "planejamento_comparativo",
+      "source_role": "primaria_unica",
+      "selected": [
+        "sql.vw_tipoeqp_previsto_unidades"
+      ],
+      "expected_primary": [
+        "sql.vw_tipoeqp_previsto_unidades"
+      ],
+      "expected_complement": [],
+      "must_NOT_include": [
+        "sql.regra",
+        "sql.vw_comparativo_previsto_existente",
+        "sql.materiais"
+      ],
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "top1_acc": 1.0,
+      "error_rate": 0.0,
+      "ndcg": 1.0,
+      "latency_ms": 476.68
+    },
+    {
+      "id": "Q02",
+      "query": "Quais equipamentos estão indisponíveis e qual o motivo?",
+      "difficulty": "single_source_simples",
+      "cluster": "inventario_estado_fisico",
+      "source_role": "",
+      "selected": [
+        "sql.materiais"
+      ],
+      "expected_primary": [
+        "sql.materiais"
+      ],
+      "expected_complement": [
+        "sql.catalogo"
+      ],
+      "must_NOT_include": [
+        "api.distribuicao_list",
+        "spreadsheets.contratos"
+      ],
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "top1_acc": 1.0,
+      "error_rate": 0.0,
+      "ndcg": 0.7602,
+      "latency_ms": 467.4
+    },
+    {
+      "id": "Q09",
+      "query": "Quais unidades da organização pertencem à região REG001?",
+      "difficulty": "single_source_simples",
+      "cluster": "estrutura_organizacional",
+      "source_role": "",
+      "selected": [
+        "sql.unidades"
+      ],
+      "expected_primary": [
+        "sql.unidades"
+      ],
+      "expected_complement": [],
+      "must_NOT_include": [
+        "api.distribuicao_list",
+        "spreadsheets.contratos"
+      ],
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "top1_acc": 1.0,
+      "error_rate": 0.0,
+      "ndcg": 1.0,
+      "latency_ms": 466.46
+    },
+    {
+      "id": "Q20",
+      "query": "Quais foram as principais fontes de recurso para as aquisições?",
+      "difficulty": "single_source_semantica",
+      "cluster": "aquisicao_contratos",
+      "source_role": "",
+      "selected": [
+        "spreadsheets.contratos"
+      ],
+      "expected_primary": [
+        "spreadsheets.contratos"
+      ],
+      "expected_complement": [
+        "spreadsheets.quadro_importacao"
+      ],
+      "must_NOT_include": [
+        "sql.materiais",
+        "api.distribuicao_list"
+      ],
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "top1_acc": 1.0,
+      "error_rate": 0.0,
+      "ndcg": 0.7602,
+      "latency_ms": 475.98
+    },
+    {
+      "id": "Q55",
+      "query": "A organização possui todos os rádios previstos em suas unidades?",
+      "difficulty": "single_source_semantica",
+      "cluster": "planejamento_comparativo",
+      "source_role": "primaria_unica",
+      "selected": [
+        "sql.vw_tipoeqp_previsto_unidades",
+        "sql.regra",
+        "api.monitoramento_sites_sistema_radio_list"
+      ],
+      "expected_primary": [
+        "sql.vw_comparativo_previsto_existente"
+      ],
+      "expected_complement": [
+        "sql.regra"
+      ],
+      "must_NOT_include": [
+        "sql.materiais",
+        "api.distribuicao_list"
+      ],
+      "precision": 0.3333,
+      "recall": 0.0,
+      "f1": 0.0,
+      "top1_acc": 0.0,
+      "error_rate": 0.0,
+      "ndcg": 0.2398,
+      "latency_ms": 466.99
+    },
+    {
+      "id": "Q21",
+      "query": "A organização está completamente equipada em todas as suas unidades?",
+      "difficulty": "single_source_semantica",
+      "cluster": "planejamento_comparativo",
+      "source_role": "",
+      "selected": [
+        "sql.vw_tipoeqp_previsto_unidades",
+        "sql.materiais"
+      ],
+      "expected_primary": [
+        "sql.vw_comparativo_previsto_existente"
+      ],
+      "expected_complement": [
+        "sql.regra"
+      ],
+      "must_NOT_include": [
+        "sql.materiais",
+        "api.distribuicao_list"
+      ],
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "top1_acc": 0.0,
+      "error_rate": 1.0,
+      "ndcg": 0.0,
+      "latency_ms": 455.9
+    },
+    {
+      "id": "Q62",
+      "query": "Quais pontos de comunicação rádio estão cadastrados e qual sua situação?",
+      "difficulty": "single_source_semantica",
+      "cluster": "manutencao_monitoramento",
+      "source_role": "primaria_unica",
+      "selected": [
+        "api.monitoramento_sites_sistema_radio_list"
+      ],
+      "expected_primary": [
+        "api.monitoramento_sites_sistema_radio_list"
+      ],
+      "expected_complement": [],
+      "must_NOT_include": [
+        "api.monitoramento_sistema_hf_list",
+        "sql.materiais",
+        "sql.unidades"
+      ],
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "top1_acc": 1.0,
+      "error_rate": 0.0,
+      "ndcg": 1.0,
+      "latency_ms": 486.19
+    },
+    {
+      "id": "Q70",
+      "query": "Qual o valor dos equipamentos que foram recebidos no depósito e ainda não foram distribuídos às unidades?",
+      "difficulty": "multi_source_complementar",
+      "cluster": "distribuicao_logistica",
+      "source_role": "primaria_com_complemento",
+      "selected": [
+        "api.distribuicao_list"
+      ],
+      "expected_primary": [
+        "api.distribuicao_list"
+      ],
+      "expected_complement": [
+        "spreadsheets.contratos"
+      ],
+      "must_NOT_include": [
+        "sql.materiais",
+        "spreadsheets.fornecimento"
+      ],
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "top1_acc": 1.0,
+      "error_rate": 0.0,
+      "ndcg": 0.7602,
+      "latency_ms": 525.36
+    },
+    {
+      "id": "Q33",
+      "query": "Qual o nome e fabricante dos equipamentos recebidos no depósito?",
+      "difficulty": "multi_source_complementar",
+      "cluster": "distribuicao_logistica",
+      "source_role": "",
+      "selected": [
+        "sql.catalogo",
+        "api.distribuicao_list"
+      ],
+      "expected_primary": [
+        "api.distribuicao_list"
+      ],
+      "expected_complement": [
+        "sql.catalogo"
+      ],
+      "must_NOT_include": [
+        "spreadsheets.contratos",
+        "sql.materiais"
+      ],
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "top1_acc": 0.0,
+      "error_rate": 0.0,
+      "ndcg": 0.8597,
+      "latency_ms": 461.11
+    },
+    {
+      "id": "Q67",
+      "query": "Quais sites de comunicação rádio estão em regiões com déficit de equipamentos?",
+      "difficulty": "multi_source_complementar",
+      "cluster": "manutencao_monitoramento",
+      "source_role": "primaria_com_complemento",
+      "selected": [
+        "api.monitoramento_sites_sistema_radio_list"
+      ],
+      "expected_primary": [
+        "api.monitoramento_sites_sistema_radio_list"
+      ],
+      "expected_complement": [
+        "sql.vw_comparativo_previsto_existente",
+        "sql.unidades"
+      ],
+      "must_NOT_include": [
+        "sql.materiais",
+        "spreadsheets.contratos"
+      ],
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "top1_acc": 1.0,
+      "error_rate": 0.0,
+      "ndcg": 0.6388,
+      "latency_ms": 480.75
+    },
+    {
+      "id": "Q69",
+      "query": "Qual o nível de completamento por tipo de equipamento em cada unidade e quais estão abaixo do mínimo?",
+      "difficulty": "multi_source_complementar",
+      "cluster": "planejamento_comparativo",
+      "source_role": "primaria_com_complemento",
+      "selected": [
+        "sql.regra",
+        "sql.vw_materiais_catalogo_unidade",
+        "sql.materiais"
+      ],
+      "expected_primary": [
+        "sql.vw_tipoeqp_previsto_unidades"
+      ],
+      "expected_complement": [
+        "sql.regra"
+      ],
+      "must_NOT_include": [
+        "sql.materiais",
+        "api.distribuicao_list"
+      ],
+      "precision": 0.3333,
+      "recall": 0.0,
+      "f1": 0.0,
+      "top1_acc": 0.0,
+      "error_rate": 1.0,
+      "ndcg": 0.3801,
+      "latency_ms": 531.5
+    },
+    {
+      "id": "Q75",
+      "query": "Os equipamentos fornecidos às unidades já constam no sistema de gestão patrimonial?",
+      "difficulty": "discriminacao_fina",
+      "cluster": "aquisicao_contratos",
+      "source_role": "primaria_com_complemento",
+      "selected": [
+        "sql.materiais"
+      ],
+      "expected_primary": [
+        "spreadsheets.fornecimento"
+      ],
+      "expected_complement": [
+        "sql.materiais"
+      ],
+      "must_NOT_include": [
+        "api.distribuicao_list",
+        "spreadsheets.contratos"
+      ],
+      "precision": 1.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "top1_acc": 0.0,
+      "error_rate": 0.0,
+      "ndcg": 0.3801,
+      "latency_ms": 503.69
+    },
+    {
+      "id": "Q76",
+      "query": "Qual a relação entre os equipamentos adquiridos via contrato e os que estão em carga nas unidades?",
+      "difficulty": "discriminacao_fina",
+      "cluster": "aquisicao_contratos",
+      "source_role": "primaria_com_complemento",
+      "selected": [
+        "sql.materiais",
+        "spreadsheets.contratos"
+      ],
+      "expected_primary": [
+        "spreadsheets.contratos"
+      ],
+      "expected_complement": [
+        "sql.materiais"
+      ],
+      "must_NOT_include": [
+        "api.distribuicao_list",
+        "spreadsheets.fornecimento"
+      ],
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "top1_acc": 0.0,
+      "error_rate": 0.0,
+      "ndcg": 0.8597,
+      "latency_ms": 534.12
+    },
+    {
+      "id": "Q79",
+      "query": "Qual o detalhamento técnico dos equipamentos indisponíveis por motivo de manutenção, incluindo fabricante e modelo?",
+      "difficulty": "discriminacao_fina",
+      "cluster": "inventario_estado_fisico",
+      "source_role": "primaria_unica",
+      "selected": [
+        "sql.materiais",
+        "sql.catalogo",
+        "sql.vw_materiais_catalogo_unidade"
+      ],
+      "expected_primary": [
+        "sql.vw_materiais_catalogo_unidade"
+      ],
+      "expected_complement": [
+        "api.manutencao_ap_direto_list"
+      ],
+      "must_NOT_include": [
+        "sql.materiais",
+        "sql.catalogo"
+      ],
+      "precision": 0.3333,
+      "recall": 1.0,
+      "f1": 0.5,
+      "top1_acc": 0.0,
+      "error_rate": 1.0,
+      "ndcg": 0.3801,
+      "latency_ms": 552.16
+    },
+    {
+      "id": "Q48",
+      "query": "Quais equipamentos precisam ser adquiridos para atingir o nível mínimo de completamento?",
+      "difficulty": "discriminacao_fina",
+      "cluster": "planejamento_comparativo",
+      "source_role": "",
+      "selected": [
+        "sql.regra"
+      ],
+      "expected_primary": [
+        "sql.vw_comparativo_previsto_existente"
+      ],
+      "expected_complement": [
+        "sql.regra"
+      ],
+      "must_NOT_include": [
+        "spreadsheets.contratos",
+        "spreadsheets.quadro_importacao"
+      ],
+      "precision": 1.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "top1_acc": 0.0,
+      "error_rate": 0.0,
+      "ndcg": 0.3801,
+      "latency_ms": 481.33
+    },
+    {
+      "id": "Q05",
+      "query": "Quais distribuições de equipamentos estão pendentes?",
+      "difficulty": "single_source_simples",
+      "cluster": "distribuicao_logistica",
+      "source_role": "",
+      "selected": [
+        "api.distribuicao_list"
+      ],
+      "expected_primary": [
+        "api.distribuicao_list"
+      ],
+      "expected_complement": [
+        "sql.materiais",
+        "sql.unidades"
+      ],
+      "must_NOT_include": [
+        "spreadsheets.contratos",
+        "api.manutencao_ap_direto_list"
+      ],
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "top1_acc": 1.0,
+      "error_rate": 0.0,
+      "ndcg": 0.6388,
+      "latency_ms": 477.17
+    },
+    {
+      "id": "Q07",
+      "query": "Qual o status dos terminais Starlink monitorados?",
+      "difficulty": "single_source_simples",
+      "cluster": "manutencao_monitoramento",
+      "source_role": "",
+      "selected": [
+        "api.monitoramento_starlink_list"
+      ],
+      "expected_primary": [
+        "api.monitoramento_starlink_list"
+      ],
+      "expected_complement": [],
+      "must_NOT_include": [
+        "sql.materiais",
+        "api.distribuicao_list"
+      ],
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "top1_acc": 1.0,
+      "error_rate": 0.0,
+      "ndcg": 1.0,
+      "latency_ms": 471.29
+    },
+    {
+      "id": "Q12",
+      "query": "Qual a dotação prevista de equipamentos para cada tipo de unidade?",
+      "difficulty": "single_source_simples",
+      "cluster": "planejamento_comparativo",
+      "source_role": "",
+      "selected": [
+        "sql.vw_tipoeqp_previsto_unidades",
+        "sql.regra"
+      ],
+      "expected_primary": [
+        "sql.regra"
+      ],
+      "expected_complement": [
+        "sql.unidades"
+      ],
+      "must_NOT_include": [
+        "sql.materiais",
+        "api.distribuicao_list"
+      ],
+      "precision": 0.5,
+      "recall": 1.0,
+      "f1": 0.6667,
+      "top1_acc": 0.0,
+      "error_rate": 0.0,
+      "ndcg": 0.4796,
+      "latency_ms": 489.3
+    },
+    {
+      "id": "Q01",
+      "query": "Qual a situação física dos equipamentos da organização?",
+      "difficulty": "single_source_simples",
+      "cluster": "inventario_estado_fisico",
+      "source_role": "",
+      "selected": [
+        "sql.materiais"
+      ],
+      "expected_primary": [
+        "sql.materiais"
+      ],
+      "expected_complement": [
+        "sql.catalogo",
+        "sql.unidades"
+      ],
+      "must_NOT_include": [
+        "api.distribuicao_list",
+        "spreadsheets.contratos"
+      ],
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "top1_acc": 1.0,
+      "error_rate": 0.0,
+      "ndcg": 0.6388,
+      "latency_ms": 456.29
+    },
+    {
+      "id": "Q28",
+      "query": "Qual o fabricante e modelo dos equipamentos em carga na organização?",
+      "difficulty": "single_source_semantica",
+      "cluster": "inventario_estado_fisico",
+      "source_role": "",
+      "selected": [
+        "sql.vw_materiais_catalogo_unidade",
+        "sql.catalogo",
+        "sql.materiais"
+      ],
+      "expected_primary": [
+        "sql.vw_materiais_catalogo_unidade"
+      ],
+      "expected_complement": [],
+      "must_NOT_include": [
+        "sql.catalogo",
+        "api.distribuicao_list"
+      ],
+      "precision": 0.3333,
+      "recall": 1.0,
+      "f1": 0.5,
+      "top1_acc": 1.0,
+      "error_rate": 1.0,
+      "ndcg": 1.0,
+      "latency_ms": 493.54
+    },
+    {
+      "id": "Q22",
+      "query": "Existem itens aguardando processo de importação?",
+      "difficulty": "single_source_semantica",
+      "cluster": "aquisicao_contratos",
+      "source_role": "",
+      "selected": [
+        "sql.vw_comparativo_previsto_existente",
+        "spreadsheets.quadro_importacao"
+      ],
+      "expected_primary": [
+        "spreadsheets.quadro_importacao"
+      ],
+      "expected_complement": [],
+      "must_NOT_include": [
+        "spreadsheets.contratos",
+        "spreadsheets.fornecimento"
+      ],
+      "precision": 0.5,
+      "recall": 1.0,
+      "f1": 0.6667,
+      "top1_acc": 0.0,
+      "error_rate": 0.0,
+      "ndcg": 0.6309,
+      "latency_ms": 480.52
+    },
+    {
+      "id": "Q26",
+      "query": "Qual a hierarquia organizacional das unidades de minha organização?",
+      "difficulty": "single_source_semantica",
+      "cluster": "estrutura_organizacional",
+      "source_role": "",
+      "selected": [
+        "sql.unidades"
+      ],
+      "expected_primary": [
+        "sql.unidades"
+      ],
+      "expected_complement": [],
+      "must_NOT_include": [
+        "sql.materiais",
+        "api.distribuicao_list"
+      ],
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "top1_acc": 1.0,
+      "error_rate": 0.0,
+      "ndcg": 1.0,
+      "latency_ms": 484.87
+    },
+    {
+      "id": "Q23",
+      "query": "Qual o diagnóstico dos equipamentos que passaram por reparo recente?",
+      "difficulty": "single_source_semantica",
+      "cluster": "manutencao_monitoramento",
+      "source_role": "",
+      "selected": [
+        "sql.materiais",
+        "api.manutencao_ap_direto_list",
+        "api.monitoramento_sistema_satelital_list"
+      ],
+      "expected_primary": [
+        "api.manutencao_ap_direto_list"
+      ],
+      "expected_complement": [],
+      "must_NOT_include": [
+        "sql.materiais",
+        "api.distribuicao_list"
+      ],
+      "precision": 0.3333,
+      "recall": 1.0,
+      "f1": 0.5,
+      "top1_acc": 0.0,
+      "error_rate": 1.0,
+      "ndcg": 0.6309,
+      "latency_ms": 498.83
+    },
+    {
+      "id": "Q31",
+      "query": "Qual o valor dos equipamentos distribuídos e ainda não entregues?",
+      "difficulty": "multi_source_complementar",
+      "cluster": "distribuicao_logistica",
+      "source_role": "",
+      "selected": [
+        "api.distribuicao_list"
+      ],
+      "expected_primary": [
+        "api.distribuicao_list"
+      ],
+      "expected_complement": [
+        "spreadsheets.contratos"
+      ],
+      "must_NOT_include": [
+        "sql.materiais",
+        "api.manutencao_ap_direto_list"
+      ],
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "top1_acc": 1.0,
+      "error_rate": 0.0,
+      "ndcg": 0.7602,
+      "latency_ms": 507.38
+    },
+    {
+      "id": "Q63",
+      "query": "Qual sistema de comunicação possui maior quantidade de terminais disponíveis entre Starlink, satelital, HF e rádio?",
+      "difficulty": "multi_source_complementar",
+      "cluster": "manutencao_monitoramento",
+      "source_role": "multiplas_primarias",
+      "selected": [
+        "api.monitoramento_starlink_list",
+        "api.monitoramento_sistema_hf_list",
+        "api.monitoramento_sistema_satelital_list"
+      ],
+      "expected_primary": [
+        "api.monitoramento_starlink_list",
+        "api.monitoramento_sistema_satelital_list",
+        "api.monitoramento_sistema_hf_list",
+        "api.monitoramento_sites_sistema_radio_list"
+      ],
+      "expected_complement": [],
+      "must_NOT_include": [
+        "sql.materiais",
+        "api.distribuicao_list",
+        "spreadsheets.contratos"
+      ],
+      "precision": 1.0,
+      "recall": 0.75,
+      "f1": 0.8571,
+      "top1_acc": 1.0,
+      "error_rate": 0.0,
+      "ndcg": 0.8319,
+      "latency_ms": 588.71
+    },
+    {
+      "id": "Q36",
+      "query": "Quais equipamentos foram manutenidos e retornaram disponíveis para quais unidades?",
+      "difficulty": "multi_source_complementar",
+      "cluster": "manutencao_monitoramento",
+      "source_role": "",
+      "selected": [
+        "sql.materiais"
+      ],
+      "expected_primary": [
+        "api.manutencao_ap_direto_list"
+      ],
+      "expected_complement": [
+        "sql.unidades",
+        "sql.materiais"
+      ],
+      "must_NOT_include": [
+        "api.distribuicao_list",
+        "spreadsheets.contratos"
+      ],
+      "precision": 1.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "top1_acc": 0.0,
+      "error_rate": 0.0,
+      "ndcg": 0.3194,
+      "latency_ms": 513.91
+    },
+    {
+      "id": "Q40",
+      "query": "Quais itens fornecidos correspondem aos contratos vigentes?",
+      "difficulty": "multi_source_complementar",
+      "cluster": "aquisicao_contratos",
+      "source_role": "",
+      "selected": [
+        "spreadsheets.contratos"
+      ],
+      "expected_primary": [
+        "spreadsheets.fornecimento"
+      ],
+      "expected_complement": [
+        "spreadsheets.contratos"
+      ],
+      "must_NOT_include": [
+        "api.distribuicao_list",
+        "sql.materiais"
+      ],
+      "precision": 1.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "top1_acc": 0.0,
+      "error_rate": 0.0,
+      "ndcg": 0.3801,
+      "latency_ms": 505.61
+    },
+    {
+      "id": "Q49",
+      "query": "Quais suprimentos foram empregados nas últimas manutenções realizadas?",
+      "difficulty": "discriminacao_fina",
+      "cluster": "manutencao_monitoramento",
+      "source_role": "",
+      "selected": [
+        "sql.materiais",
+        "api.manutencao_ap_direto_list"
+      ],
+      "expected_primary": [
+        "api.manutencao_ap_direto_list"
+      ],
+      "expected_complement": [],
+      "must_NOT_include": [
+        "sql.materiais",
+        "spreadsheets.contratos"
+      ],
+      "precision": 0.5,
+      "recall": 1.0,
+      "f1": 0.6667,
+      "top1_acc": 0.0,
+      "error_rate": 1.0,
+      "ndcg": 0.6309,
+      "latency_ms": 514.79
+    },
+    {
+      "id": "Q46",
+      "query": "Quais equipamentos da planilha de fornecimento ainda não estão registrados no sistema patrimonial?",
+      "difficulty": "discriminacao_fina",
+      "cluster": "aquisicao_contratos",
+      "source_role": "",
+      "selected": [
+        "sql.materiais"
+      ],
+      "expected_primary": [
+        "spreadsheets.fornecimento"
+      ],
+      "expected_complement": [
+        "sql.materiais"
+      ],
+      "must_NOT_include": [
+        "spreadsheets.contratos",
+        "api.distribuicao_list"
+      ],
+      "precision": 1.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "top1_acc": 0.0,
+      "error_rate": 0.0,
+      "ndcg": 0.3801,
+      "latency_ms": 548.7
+    },
+    {
+      "id": "Q44",
+      "query": "Quais equipamentos passaram por manutenção e qual a situação patrimonial atual deles?",
+      "difficulty": "discriminacao_fina",
+      "cluster": "manutencao_monitoramento",
+      "source_role": "",
+      "selected": [
+        "sql.materiais"
+      ],
+      "expected_primary": [
+        "api.manutencao_ap_direto_list"
+      ],
+      "expected_complement": [
+        "sql.materiais"
+      ],
+      "must_NOT_include": [
+        "api.distribuicao_list",
+        "spreadsheets.contratos"
+      ],
+      "precision": 1.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "top1_acc": 0.0,
+      "error_rate": 0.0,
+      "ndcg": 0.3801,
+      "latency_ms": 511.83
+    },
+    {
+      "id": "Q42",
+      "query": "Qual a diferença entre os equipamentos previstos e os existentes por tipo de equipamento em cada unidade?",
+      "difficulty": "discriminacao_fina",
+      "cluster": "planejamento_comparativo",
+      "source_role": "",
+      "selected": [
+        "sql.vw_tipoeqp_previsto_unidades"
+      ],
+      "expected_primary": [
+        "sql.vw_comparativo_previsto_existente"
+      ],
+      "expected_complement": [],
+      "must_NOT_include": [
+        "sql.materiais",
+        "sql.regra",
+        "sql.vw_tipoeqp_previsto_unidades"
+      ],
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "top1_acc": 0.0,
+      "error_rate": 1.0,
+      "ndcg": 0.0,
+      "latency_ms": 543.61
+    },
+    {
+      "id": "Q10",
+      "query": "Quais são os modelos dos equipamentos do fabricante FAB001 catalogados?",
+      "difficulty": "single_source_simples",
+      "cluster": "inventario_estado_fisico",
+      "source_role": "",
+      "selected": [
+        "sql.vw_materiais_catalogo_unidade",
+        "sql.catalogo",
+        "sql.materiais"
+      ],
+      "expected_primary": [
+        "sql.catalogo"
+      ],
+      "expected_complement": [],
+      "must_NOT_include": [
+        "api.distribuicao_list",
+        "spreadsheets.contratos"
+      ],
+      "precision": 0.3333,
+      "recall": 1.0,
+      "f1": 0.5,
+      "top1_acc": 0.0,
+      "error_rate": 0.0,
+      "ndcg": 0.6309,
+      "latency_ms": 505.45
+    },
+    {
+      "id": "Q13",
+      "query": "Quais itens constam no quadro de importação?",
+      "difficulty": "single_source_simples",
+      "cluster": "aquisicao_contratos",
+      "source_role": "",
+      "selected": [
+        "spreadsheets.quadro_importacao"
+      ],
+      "expected_primary": [
+        "spreadsheets.quadro_importacao"
+      ],
+      "expected_complement": [],
+      "must_NOT_include": [
+        "spreadsheets.contratos",
+        "sql.materiais"
+      ],
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "top1_acc": 1.0,
+      "error_rate": 0.0,
+      "ndcg": 1.0,
+      "latency_ms": 467.82
+    },
+    {
+      "id": "Q03",
+      "query": "Quais contratos estão vigentes atualmente?",
+      "difficulty": "single_source_simples",
+      "cluster": "aquisicao_contratos",
+      "source_role": "",
+      "selected": [
+        "spreadsheets.contratos"
+      ],
+      "expected_primary": [
+        "spreadsheets.contratos"
+      ],
+      "expected_complement": [],
+      "must_NOT_include": [
+        "api.distribuicao_list",
+        "sql.materiais"
+      ],
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "top1_acc": 1.0,
+      "error_rate": 0.0,
+      "ndcg": 1.0,
+      "latency_ms": 404.23
+    },
+    {
+      "id": "Q04",
+      "query": "Qual o valor total dos itens adquiridos por contrato?",
+      "difficulty": "single_source_simples",
+      "cluster": "aquisicao_contratos",
+      "source_role": "",
+      "selected": [
+        "spreadsheets.contratos"
+      ],
+      "expected_primary": [
+        "spreadsheets.contratos"
+      ],
+      "expected_complement": [],
+      "must_NOT_include": [
+        "sql.materiais",
+        "api.distribuicao_list"
+      ],
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "top1_acc": 1.0,
+      "error_rate": 0.0,
+      "ndcg": 1.0,
+      "latency_ms": 450.32
+    },
+    {
+      "id": "Q27",
+      "query": "Quais itens do contrato já foram entregues às unidades?",
+      "difficulty": "single_source_semantica",
+      "cluster": "aquisicao_contratos",
+      "source_role": "",
+      "selected": [
+        "api.distribuicao_list",
+        "spreadsheets.contratos"
+      ],
+      "expected_primary": [
+        "api.distribuicao_list"
+      ],
+      "expected_complement": [
+        "spreadsheets.contratos, sheet.fornecimento"
+      ],
+      "must_NOT_include": [
+        "sql.materiais"
+      ],
+      "precision": 0.5,
+      "recall": 1.0,
+      "f1": 0.6667,
+      "top1_acc": 1.0,
+      "error_rate": 0.0,
+      "ndcg": 0.7602,
+      "latency_ms": 465.39
+    },
+    {
+      "id": "Q61",
+      "query": "Qual o inventário completo de equipamentos com dados técnicos por região?",
+      "difficulty": "single_source_semantica",
+      "cluster": "inventario_estado_fisico",
+      "source_role": "primaria_unica",
+      "selected": [
+        "sql.catalogo",
+        "sql.vw_materiais_catalogo_unidade",
+        "sql.materiais"
+      ],
+      "expected_primary": [
+        "sql.vw_materiais_catalogo_unidade"
+      ],
+      "expected_complement": [],
+      "must_NOT_include": [
+        "sql.materiais",
+        "sql.unidades",
+        "sql.catalogo"
+      ],
+      "precision": 0.3333,
+      "recall": 1.0,
+      "f1": 0.5,
+      "top1_acc": 0.0,
+      "error_rate": 1.0,
+      "ndcg": 0.6309,
+      "latency_ms": 453.44
+    },
+    {
+      "id": "Q58",
+      "query": "Quais aquisições estão em processo de internação no país?",
+      "difficulty": "single_source_semantica",
+      "cluster": "aquisicao_contratos",
+      "source_role": "primaria_unica",
+      "selected": [
+        "spreadsheets.contratos",
+        "spreadsheets.quadro_importacao"
+      ],
+      "expected_primary": [
+        "spreadsheets.quadro_importacao"
+      ],
+      "expected_complement": [],
+      "must_NOT_include": [
+        "spreadsheets.contratos",
+        "spreadsheets.fornecimento",
+        "api.distribuicao_list"
+      ],
+      "precision": 0.5,
+      "recall": 1.0,
+      "f1": 0.6667,
+      "top1_acc": 0.0,
+      "error_rate": 1.0,
+      "ndcg": 0.6309,
+      "latency_ms": 489.72
+    },
+    {
+      "id": "Q60",
+      "query": "Quais comunicações via satélite estão sendo rastreadas atualmente?",
+      "difficulty": "single_source_semantica",
+      "cluster": "manutencao_monitoramento",
+      "source_role": "primaria_unica",
+      "selected": [
+        "api.monitoramento_sistema_satelital_list"
+      ],
+      "expected_primary": [
+        "api.monitoramento_sistema_satelital_list"
+      ],
+      "expected_complement": [],
+      "must_NOT_include": [
+        "api.monitoramento_starlink_list",
+        "sql.materiais"
+      ],
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "top1_acc": 1.0,
+      "error_rate": 0.0,
+      "ndcg": 1.0,
+      "latency_ms": 468.09
+    },
+    {
+      "id": "Q64",
+      "query": "Traga um comparativo do quantitativo adquirido, recebido no depósito e fornecido às unidades para os itens do contrato.",
+      "difficulty": "multi_source_complementar",
+      "cluster": "aquisicao_contratos",
+      "source_role": "multiplas_primarias",
+      "selected": [
+        "sql.vw_comparativo_previsto_existente",
+        "api.distribuicao_list",
+        "spreadsheets.contratos"
+      ],
+      "expected_primary": [
+        "spreadsheets.contratos",
+        "api.distribuicao_list",
+        "spreadsheets.fornecimento"
+      ],
+      "expected_complement": [],
+      "must_NOT_include": [
+        "sql.materiais",
+        "spreadsheets.quadro_importacao"
+      ],
+      "precision": 0.6667,
+      "recall": 0.6667,
+      "f1": 0.6667,
+      "top1_acc": 0.0,
+      "error_rate": 0.0,
+      "ndcg": 0.5307,
+      "latency_ms": 595.37
+    },
+    {
+      "id": "Q65",
+      "query": "Qual o pipeline completo de aquisição dos equipamentos: o que foi importado, contratado e já fornecido?",
+      "difficulty": "multi_source_complementar",
+      "cluster": "aquisicao_contratos",
+      "source_role": "multiplas_primarias",
+      "selected": [
+        "spreadsheets.contratos"
+      ],
+      "expected_primary": [
+        "spreadsheets.quadro_importacao",
+        "spreadsheets.contratos",
+        "spreadsheets.fornecimento"
+      ],
+      "expected_complement": [],
+      "must_NOT_include": [
+        "sql.materiais",
+        "api.distribuicao_list"
+      ],
+      "precision": 1.0,
+      "recall": 0.3333,
+      "f1": 0.5,
+      "top1_acc": 1.0,
+      "error_rate": 0.0,
+      "ndcg": 0.4693,
+      "latency_ms": 570.17
+    },
+    {
+      "id": "Q68",
+      "query": "Quais equipamentos da view de materiais por unidade estão indisponíveis e precisam de manutenção prioritária?",
+      "difficulty": "multi_source_complementar",
+      "cluster": "inventario_estado_fisico",
+      "source_role": "primaria_com_complemento",
+      "selected": [
+        "sql.materiais",
+        "sql.vw_materiais_catalogo_unidade"
+      ],
+      "expected_primary": [
+        "sql.vw_materiais_catalogo_unidade"
+      ],
+      "expected_complement": [
+        "api.manutencao_ap_direto_list"
+      ],
+      "must_NOT_include": [
+        "api.distribuicao_list",
+        "spreadsheets.contratos"
+      ],
+      "precision": 0.5,
+      "recall": 1.0,
+      "f1": 0.6667,
+      "top1_acc": 0.0,
+      "error_rate": 0.0,
+      "ndcg": 0.4796,
+      "latency_ms": 523.83
+    },
+    {
+      "id": "Q32",
+      "query": "Quais equipamentos indisponíveis precisam de manutenção e qual o diagnóstico?",
+      "difficulty": "multi_source_complementar",
+      "cluster": "manutencao_monitoramento",
+      "source_role": "",
+      "selected": [
+        "sql.materiais"
+      ],
+      "expected_primary": [
+        "sql.materiais"
+      ],
+      "expected_complement": [
+        "api.manutencao_ap_direto_list"
+      ],
+      "must_NOT_include": [
+        "api.distribuicao_list",
+        "spreadsheets.contratos"
+      ],
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "top1_acc": 1.0,
+      "error_rate": 0.0,
+      "ndcg": 0.7602,
+      "latency_ms": 473.7
+    },
+    {
+      "id": "Q73",
+      "query": "Quais equipamentos foram reparados pela equipe técnica com troca de componentes?",
+      "difficulty": "discriminacao_fina",
+      "cluster": "manutencao_monitoramento",
+      "source_role": "primaria_unica",
+      "selected": [
+        "sql.vw_materiais_catalogo_unidade",
+        "sql.materiais",
+        "sql.catalogo"
+      ],
+      "expected_primary": [
+        "api.manutencao_ap_direto_list"
+      ],
+      "expected_complement": [],
+      "must_NOT_include": [
+        "sql.materiais",
+        "api.distribuicao_list",
+        "spreadsheets.contratos"
+      ],
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "top1_acc": 0.0,
+      "error_rate": 1.0,
+      "ndcg": 0.0,
+      "latency_ms": 464.28
+    },
+    {
+      "id": "Q78",
+      "query": "Quais tipos de equipamento têm quantidade existente superior ao previsto e qual o excedente?",
+      "difficulty": "discriminacao_fina",
+      "cluster": "planejamento_comparativo",
+      "source_role": "primaria_unica",
+      "selected": [
+        "sql.materiais",
+        "sql.vw_tipoeqp_previsto_unidades",
+        "sql.regra"
+      ],
+      "expected_primary": [
+        "sql.vw_comparativo_previsto_existente"
+      ],
+      "expected_complement": [],
+      "must_NOT_include": [
+        "sql.materiais",
+        "sql.regra",
+        "sql.vw_tipoeqp_previsto_unidades"
+      ],
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "top1_acc": 0.0,
+      "error_rate": 1.0,
+      "ndcg": 0.0,
+      "latency_ms": 501.88
+    },
+    {
+      "id": "Q74",
+      "query": "Qual a capacidade prevista de equipamentos para unidades de fronteira?",
+      "difficulty": "discriminacao_fina",
+      "cluster": "planejamento_comparativo",
+      "source_role": "primaria_unica",
+      "selected": [
+        "sql.vw_tipoeqp_previsto_unidades",
+        "sql.regra"
+      ],
+      "expected_primary": [
+        "sql.vw_tipoeqp_previsto_unidades"
+      ],
+      "expected_complement": [
+        "sql.unidades"
+      ],
+      "must_NOT_include": [
+        "sql.vw_comparativo_previsto_existente",
+        "sql.regra"
+      ],
+      "precision": 0.5,
+      "recall": 1.0,
+      "f1": 0.6667,
+      "top1_acc": 1.0,
+      "error_rate": 1.0,
+      "ndcg": 0.7602,
+      "latency_ms": 417.83
+    },
+    {
+      "id": "Q43",
+      "query": "Quais sistemas satelitais (não Starlink) estão operacionais?",
+      "difficulty": "discriminacao_fina",
+      "cluster": "manutencao_monitoramento",
+      "source_role": "",
+      "selected": [
+        "api.monitoramento_sistema_satelital_list",
+        "api.monitoramento_starlink_list"
+      ],
+      "expected_primary": [
+        "api.monitoramento_sistema_satelital_list"
+      ],
+      "expected_complement": [],
+      "must_NOT_include": [
+        "api.monitoramento_starlink_list"
+      ],
+      "precision": 0.5,
+      "recall": 1.0,
+      "f1": 0.6667,
+      "top1_acc": 1.0,
+      "error_rate": 1.0,
+      "ndcg": 1.0,
+      "latency_ms": 455.35
+    }
+  ]
+}

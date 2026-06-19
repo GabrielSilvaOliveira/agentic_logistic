@@ -1,0 +1,13 @@
+# Dependências do protótipo mínimo
+# Instale com: pip install -r requirements.txt
+
+# LLM backends
+httpx>=0.27.0           # cliente HTTP para Ollama e Azure OpenAI
+
+# Banco de dados
+sqlalchemy>=2.0.0       # ORM e execução SQL
+pymysql>=1.1.0          # driver MySQL (para o banco logístico existente)
+# psycopg2-binary>=2.9  # alternativa para PostgreSQL (Django stack)
+
+# Validação de dados
+pydantic>=2.0.0         # validação de JSON schemas (opcional, para typed results)
