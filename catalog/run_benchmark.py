@@ -341,23 +341,31 @@ def main():
     all_model_summary = {}
 
     for model_name in args.models:
-        if model_name not in MODEL_REGISTRY:
+
+        if model_name == "bm25":
+            from catalog.bm25_context_builder import BM25ContextBuilder
+            cb = BM25ContextBuilder(
+                catalog_path=args.catalog,
+                top_k=args.top_k,
+                selection_strategy=args.strategy,
+            )
+        elif model_name not in MODEL_REGISTRY:
             print(f"\n[{model_name}] ❌ Modelo não reconhecido. Pulando.")
             continue
 
-        print(f"\n{'─'*65}")
-        print(f"  MODELO: {model_name} ({MODEL_REGISTRY[model_name]['hf_id']})")
-        print(f"{'─'*65}")
+        else:
+            print(f"\n{'─'*65}")
+            print(f"  MODELO: {model_name} ({MODEL_REGISTRY[model_name]['hf_id']})")
+            print(f"{'─'*65}")
 
-        # Inicializa e constrói índice uma única vez
-        cb = SemanticContextBuilder(
-            catalog_path=args.catalog,
-            model_name=model_name,
-            top_k=args.top_k,
-            selection_strategy=args.strategy,
-        )
-        cb.rebuild_index(verbose=False)
-        print(f"  Índice pronto. Threshold default: {cb.min_similarity:.2f}")
+            cb = SemanticContextBuilder(
+                catalog_path=args.catalog,
+                model_name=model_name,
+                top_k=args.top_k,
+                selection_strategy=args.strategy,
+            )
+            cb.rebuild_index(verbose=False)
+            print(f"  Índice pronto. Threshold default: {cb.min_similarity:.2f}")
 
         fold_metrics_list: list[dict] = []
         all_test_results:  list[dict] = []

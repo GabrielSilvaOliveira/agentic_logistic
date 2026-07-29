@@ -1,0 +1,4 @@
+comparacao,familia,n_queries,diff,p_raw,p_holm,ci_low,ci_high,significativo_holm
+bm25: v1 vs v2,ablacao_catalogo,80,-0.017916249999999995,0.737,0.737,-0.11501165624999998,0.08208375,False
+bm25: v2 vs v3,ablacao_catalogo,80,-0.063335,0.1176,0.3024,-0.14458503125000002,0.01584409374999985,False
+bm25: v1 vs v3,ablacao_catalogo,80,-0.08125125,0.1008,0.3024,-0.17916875000000002,0.01666625,False

@@ -1,0 +1,44 @@
+{
+  "benchmark_metadata": {
+    "version": "2.0",
+    "total_queries": 80,
+    "created_by": "Gabriel Silva de Oliveira",
+    "project": "Framework Agentic AI — Apoio à Decisão Logística",
+    "difficulty_distribution": {
+      "single_source_simples": 20,
+      "single_source_semantica": 20,
+      "multi_source_complementar": 20,
+      "discriminacao_fina": 20
+    },
+    "cluster_distribution": {
+      "inventario_estado_fisico": 10,
+      "planejamento_comparativo": 8,
+      "estrutura_organizacional": 4,
+      "aquisicao_contratos": 9,
+      "distribuicao_logistica": 7,
+      "manutencao_monitoramento": 12
+    }
+  },
+  "evaluation": "Stratified 5-Fold CV",
+  "seed": 42,
+  "top_k": 3,
+  "strategy": "score_gap",
+  "models": {
+    "bm25": {
+      "precision": 0.6333,
+      "precision_std": 0.1161,
+      "recall": 0.5792,
+      "recall_std": 0.0564,
+      "f1": 0.5313,
+      "f1_std": 0.071,
+      "top1_acc": 0.4875,
+      "top1_acc_std": 0.0523,
+      "error_rate": 0.15,
+      "error_rate_std": 0.0342,
+      "ndcg": 0.5471,
+      "ndcg_std": 0.0858,
+      "latency_ms": 0.0738,
+      "latency_ms_std": 0.0055
+    }
+  }
+}
